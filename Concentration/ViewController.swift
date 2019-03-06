@@ -14,27 +14,26 @@ class ViewController: UIViewController, TunerDelegate {
     
     @IBOutlet var recordButton: UIButton!
     let tuner = Tuner()
-    fileprivate var timer:      Timer?
-    var chordTest = [Float](arrayLiteral: 1.0, 2.0, 3.0, 4.0, 5.0, 6.0)
+    let amp_threshold = 0
+    var chordTest = [Double](arrayLiteral: 1.0, 2.0, 3.0, 4.0, 5.0, 6.0)
+    var recordedChord = [Double]()
     
     @IBAction func startRecording(_ sender: Any) {
         recordChord(chord: chordTest)
     }
     
-    func tunerDidMeasure(frequency: Double){
+    func tunerDidMeasure(frequency: Double, amplitude: Double){
         recordButton.setTitle("\(frequency)", for: .normal)
-        
+        if(amplitude > amp_threshold){
+            recordedChord.append(contentsOf: frequency)
+        }
     }
     
     func recordChord(chord : [Float]){
         
-        
-        //for note in chord {
             tuner.delegate = self
-          //  print(note)
             tuner.startMonitoring()
-            //tuner.stopMonitoring()
-       // }
+            
     }
     
 }
