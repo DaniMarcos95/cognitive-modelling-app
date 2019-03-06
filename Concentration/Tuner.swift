@@ -30,7 +30,7 @@ protocol TunerDelegate {
      * distance is between the actual tracked frequency and the nearest note.
      * Finally, the amplitude is the volume (note: of all frequencies).
      */
-    func tunerDidMeasure(frequency: Double, amplitude:Double)
+    func tunerDidMeasure(recordedChord: [Double])
 }
 
 class Tuner: NSObject {
@@ -40,6 +40,8 @@ class Tuner: NSObject {
     fileprivate var timer:      Timer?
     fileprivate let microphone: AKMicrophone
     fileprivate let analyzer:   AKAudioAnalyzer
+    let amp_threshold = 0.0
+    var recordedChord = [Double]()
     var count = 0
 
     override init() {
@@ -55,14 +57,14 @@ class Tuner: NSObject {
         AKOrchestra.add(analyzer)
     }
 
-    func startMonitoring() {
+    func startRecordingChord() {
         /* Start the microphone and analyzer. */
         analyzer.play()
         microphone.play()
-        print("Estoy aqui")
+        recordedChord = [Double]()
         /* Initialize and schedule a new run loop timer. */
         timer = Timer.scheduledTimer(timeInterval: 0.1, target: self,
-                                     selector: #selector(Tuner.tick),
+                                     selector: #selector(tick),
                                      userInfo: nil,
                                      repeats: true)
     }
@@ -75,10 +77,17 @@ class Tuner: NSObject {
     }
 
     @objc func tick() {
-        
         /* Read frequency and amplitude from the analyzer. */
         let frequency = Double(analyzer.trackedFrequency.floatValue)
         let amplitude = Double(analyzer.trackedAmplitude.floatValue)
-        self.delegate?.tunerDidMeasure(frequency:frequency, amplitude:amplitude)
+        if(amplitude > amp_threshold){
+            recordedChord.append(frequency)
+            print("Frequency = " + "\(frequency)")
+            if(recordedChord.count == 6){
+                stopMonitoring()
+                print(recordedChord)
+                //Set variable to true to let know we are done
+            }
+        }
     }
 }
