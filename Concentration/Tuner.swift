@@ -30,7 +30,8 @@ protocol TunerDelegate {
      * distance is between the actual tracked frequency and the nearest note.
      * Finally, the amplitude is the volume (note: of all frequencies).
      */
-    func tunerDidMeasure(recordedChord: [Double])
+    func compareChord(recordedChord: [Double])
+    func changeStringColor(stringIndex: Int)
 }
 
 class Tuner: NSObject {
@@ -82,11 +83,10 @@ class Tuner: NSObject {
         let amplitude = Double(analyzer.trackedAmplitude.floatValue)
         if(amplitude > amp_threshold){
             recordedChord.append(frequency)
-            print("Frequency = " + "\(frequency)")
+            self.delegate?.changeStringColor(stringIndex: recordedChord.count-1)
             if(recordedChord.count == 6){
                 stopMonitoring()
-                print(recordedChord)
-                //Set variable to true to let know we are done
+                self.delegate?.compareChord(recordedChord: recordedChord)
             }
         }
     }

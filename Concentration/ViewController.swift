@@ -9,20 +9,43 @@
 import AudioKit
 import UIKit
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, TunerDelegate {
+    
+    func compareChord(recordedChord: [Double]) {
+        difference = 0
+        for i in 0...recordedChord.count-1 {
+            difference += abs(recordedChord[i] - originalChord[i])
+        }
+        print(difference)
+    }
+    
+    func changeStringColor(stringIndex: Int){
+        if(stringIndex < 5){
+            stringColors[stringIndex] = "Green"
+            stringColors[stringIndex+1] = "Blue"
+            print(stringColors)
+        }else{
+            stringColors[stringIndex] = "Green"
+            print(stringColors)
+        }
+    }
     
     @IBOutlet var recordButton: UIButton!
     let tuner = Tuner()
+    var originalChord = [Double]()
+    var difference = 0.0
+    var stringColors = [String]()
     
     @IBAction func startRecording(_ sender: Any) {
+        stringColors = ["Black", "Black", "Black", "Black", "Black", "Black"]
+        getChord()
+        tuner.delegate = self
         tuner.startRecordingChord()
-        //while()
-
     }
     
-    //Call variables from tuner to see if it is done.
-    
+    func getChord(){
+        originalChord = [96.0, 123.0, 45.0, 123.0, 97.0, 65.0]
+    }
 }
 
 
