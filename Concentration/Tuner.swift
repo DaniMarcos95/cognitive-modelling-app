@@ -30,7 +30,7 @@ protocol TunerDelegate {
      * distance is between the actual tracked frequency and the nearest note.
      * Finally, the amplitude is the volume (note: of all frequencies).
      */
-    func tunerDidMeasure(frequency: Double)
+    func tunerDidMeasure(frequency: Double, amplitude:Double)
 }
 
 class Tuner: NSObject {
@@ -61,7 +61,7 @@ class Tuner: NSObject {
         microphone.play()
         print("Estoy aqui")
         /* Initialize and schedule a new run loop timer. */
-        timer = Timer.scheduledTimer(timeInterval: 2, target: self,
+        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self,
                                      selector: #selector(Tuner.tick),
                                      userInfo: nil,
                                      repeats: true)
@@ -75,13 +75,10 @@ class Tuner: NSObject {
     }
 
     @objc func tick() {
-        print("Dentro de tick")
-        count += 1
-        print(count)
         
         /* Read frequency and amplitude from the analyzer. */
         let frequency = Double(analyzer.trackedFrequency.floatValue)
-        print(frequency)
-        self.delegate?.tunerDidMeasure(frequency:frequency)
+        let amplitude = Double(analyzer.trackedAmplitude.floatValue)
+        self.delegate?.tunerDidMeasure(frequency:frequency, amplitude:amplitude)
     }
 }
