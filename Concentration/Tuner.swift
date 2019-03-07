@@ -41,7 +41,7 @@ class Tuner: NSObject {
     fileprivate var timer:      Timer?
     fileprivate let microphone: AKMicrophone
     fileprivate let analyzer:   AKAudioAnalyzer
-    let amp_threshold = 0.0
+    let amp_threshold = 0.2
     var recordedChord = [Double]()
     var count = 0
 
@@ -64,7 +64,7 @@ class Tuner: NSObject {
         microphone.play()
         recordedChord = [Double]()
         /* Initialize and schedule a new run loop timer. */
-        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self,
+        timer = Timer.scheduledTimer(timeInterval: 0.5, target: self,
                                      selector: #selector(tick),
                                      userInfo: nil,
                                      repeats: true)
@@ -81,6 +81,7 @@ class Tuner: NSObject {
         /* Read frequency and amplitude from the analyzer. */
         let frequency = Double(analyzer.trackedFrequency.floatValue)
         let amplitude = Double(analyzer.trackedAmplitude.floatValue)
+        print(amplitude)
         if(amplitude > amp_threshold){
             recordedChord.append(frequency)
             self.delegate?.changeStringColor(stringIndex: recordedChord.count-1)
