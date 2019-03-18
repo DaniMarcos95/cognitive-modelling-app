@@ -24,28 +24,6 @@ class UserInterface: UIView {
     lazy var p4 = bounds.height * 7/10
     lazy var p5 = bounds.height * 9/10
     
-    var recordE = [CGFloat]()
-    var recordA = [sA, sE]
-    var recordD = [CGFloat]()
-    var recordG = [CGFloat]()
-    var recordB = [CGFloat]()
-    var recorde = [CGFloat]()
-    
-    
-    init() {
-        let rect = CGRect()
-        super.init(frame: rect)
-        self.recordE = [sE]
-        self.recordA = [sA, sE]
-        self.recordD = [sD, sE, sA]
-        self.recordG = [sG, sD, sE, sA]
-        self.recordB = [sB, sG, sD, sE, sA]
-        self.recorde = [se, sB, sG, sD, sE, sA]
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     //Draw Frame
     var path: UIBezierPath!
     func createRectangle(){
@@ -187,7 +165,7 @@ class UserInterface: UIView {
         createTextLayer()
     }
     
-    func draw(_ rect: CGRect, recordedString: [CGFloat]) {
+    func draw(stringIndex: Int) {
         self.createRectangle()
         Frets()
         Strings()
@@ -200,9 +178,18 @@ class UserInterface: UIView {
          update(n: Int(sD))
          Finished(n: Int(sE))
          Finished(n: Int(sA))
+         
          */
+        let recordE = [sE]
+        let recordA = [sA, sE]
+        let recordD = [sD, sE, sA]
+        let recordG = [sG, sD, sE, sA]
+        let recordB = [sB, sG, sD, sE, sA]
+        let recorde = [se, sB, sG, sD, sE, sA]
         
-        for (index, n) in recordG.enumerated() {
+        let stringOrder = [recordE, recordA, recordD, recordG, recordB, recorde]
+
+        for (index, n) in stringOrder[stringIndex].enumerated() {
             if index == 0 {
                 update(n: Int(n))
             } else {
