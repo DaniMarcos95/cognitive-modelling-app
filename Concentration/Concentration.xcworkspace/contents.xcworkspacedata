@@ -5,6 +5,6 @@
       location = "group:/Users/s3734277/Desktop/cognitive-modelling-app/Concentration/UserInterface.swift">
    </FileRef>
    <FileRef
-      location = "self:">
+      location = "container:../Concentration.xcodeproj">
    </FileRef>
 </Workspace>

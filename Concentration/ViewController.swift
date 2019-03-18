@@ -36,11 +36,13 @@ class ViewController: UIViewController, TunerDelegate {
     var originalChord = [Double]()
     var difference = 0.0
     var stringColors = [String]()
+    let rect = CGRect()
+    
     
     @IBAction func startRecording(_ sender: Any) {
         stringColors = ["Black", "Black", "Black", "Black", "Black", "Black"]
         getChord()
-        userInterface.draw()
+        userInterface.draw(rect: rect, recordedString: userInterface.recordA)
         //tuner.delegate = self
         //tuner.startRecordingChord()
     }

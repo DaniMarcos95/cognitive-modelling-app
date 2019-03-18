@@ -5,7 +5,6 @@
 //  Created by Leonard Praetorius on 01/03/2019.
 //  Copyright © 2019 Leonard Praetorius. All rights reserved.
 //
-
 import UIKit
 
 class UserInterface: UIView {
@@ -25,6 +24,28 @@ class UserInterface: UIView {
     lazy var p4 = bounds.height * 7/10
     lazy var p5 = bounds.height * 9/10
     
+    var recordE = [CGFloat]()
+    var recordA = [sA, sE]
+    var recordD = [CGFloat]()
+    var recordG = [CGFloat]()
+    var recordB = [CGFloat]()
+    var recorde = [CGFloat]()
+    
+    
+    init() {
+        let rect = CGRect()
+        super.init(frame: rect)
+        self.recordE = [sE]
+        self.recordA = [sA, sE]
+        self.recordD = [sD, sE, sA]
+        self.recordG = [sG, sD, sE, sA]
+        self.recordB = [sB, sG, sD, sE, sA]
+        self.recorde = [se, sB, sG, sD, sE, sA]
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     //Draw Frame
     var path: UIBezierPath!
     func createRectangle(){
@@ -66,17 +87,15 @@ class UserInterface: UIView {
             string.move(to: .init(x: n, y:0))
             string.addLine(to: .init(x: n, y: bounds.height))
             UIColor.black.setStroke()
-            //light blue
-            //UIColor.init(red: 0, green: 255, blue: 255, alpha: 1).setStroke()
             string.lineWidth = 3
             string.stroke()
         }
     }
-    //Animate currently measured string
     var current_string = UIBezierPath()
-    func current() {
-        current_string.move(to: .init(x: sE, y:0))
-        current_string.addLine(to: .init(x: sE, y: bounds.height))
+    func update(n: Int) {
+        current_string.move(to: CGPoint(x: n, y:0))
+        current_string.addLine(to: CGPoint(x: n, y: Int(bounds.height)))
+        UIColor.black.setStroke()
         current_string.stroke()
         let animate_string = CAShapeLayer()
         animate_string.path = current_string.cgPath
@@ -88,10 +107,45 @@ class UserInterface: UIView {
         animation.fromValue = 0
         animation.toValue = 1
         animation.duration = 2
-        animation.autoreverses = true
+        animation.autoreverses = false
         animation.repeatCount = .infinity
         animate_string.add(animation, forKey: "line")
+        
     }
+    var finished_string = UIBezierPath()
+    func Finished(n: Int) {
+        finished_string.move(to: CGPoint(x: n, y:0))
+        finished_string.addLine(to: CGPoint(x: n, y: Int(bounds.height)))
+        UIColor.green.setStroke()
+        finished_string.lineWidth = 3
+        finished_string.stroke()
+    }
+    //animate_string.strokeColor = UIColor.init(red: 0, green: 1, blue: 0, alpha: 1).cgColor
+    
+    
+    
+    /*
+     //Animate currently measured string
+     var current_string = UIBezierPath()
+     func current() {
+     current_string.move(to: .init(x: sE, y:0))
+     current_string.addLine(to: .init(x: sE, y: bounds.height))
+     current_string.stroke()
+     let animate_string = CAShapeLayer()
+     animate_string.path = current_string.cgPath
+     animate_string.strokeColor = UIColor.init(red: 0, green: 1, blue: 1, alpha: 1).cgColor
+     animate_string.strokeEnd = 0
+     animate_string.lineWidth = 3;
+     self.layer.addSublayer(animate_string)
+     let animation = CABasicAnimation(keyPath: "strokeEnd")
+     animation.fromValue = 0
+     animation.toValue = 1
+     animation.duration = 2
+     animation.autoreverses = true
+     animation.repeatCount = .infinity
+     animate_string.add(animation, forKey: "line")
+     }
+     */
     
     //Draw Frets
     var frets = UIBezierPath()
@@ -125,7 +179,7 @@ class UserInterface: UIView {
             textLayer.foregroundColor = UIColor.white.cgColor
             textLayer.font = UIFont(name: "Avenir", size: 20.0)
             textLayer.fontSize = 20.0
-            /*textLayer.alignmentMode = CATextLayerAlignmentMode.center*/
+            //textLayer.alignmentMode = CATextLayerAlignmentMode.center
             textLayer.frame = CGRect(x: string - 10, y: fret - 15, width: 20, height: 20)
             textLayer.contentsScale = UIScreen.main.scale
             self.layer.addSublayer(textLayer)
@@ -133,12 +187,30 @@ class UserInterface: UIView {
         createTextLayer()
     }
     
-    func draw() {
+    func draw(_ rect: CGRect, recordedString: [CGFloat]) {
         self.createRectangle()
         Frets()
         Strings()
-        current()
         Marks()
+        /*
+         let upstrings = [sE, sA, sD, sG, sB, se]
+         for current_string in upstrings {
+         update(n: Int(current_string))
+         }
+         update(n: Int(sD))
+         Finished(n: Int(sE))
+         Finished(n: Int(sA))
+         */
+        
+        for (index, n) in recordG.enumerated() {
+            if index == 0 {
+                update(n: Int(n))
+            } else {
+                Finished(n: Int(n))
+            }
+        }
+        
+        
         let C = [[1, sB, p1],[2, sD, p2],[3, sA, p3]]
         for finger in C {
             Fingers(digit: String(Int(finger[0])), string: Int(finger[1]), fret: Int(finger[2]))

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0650F1BA223E2A3B00AB4E57 /* UserInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0650F1B9223E2A3B00AB4E57 /* UserInterface.swift */; };
 		065BCD6922099D340072A656 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065BCD6822099D340072A656 /* AppDelegate.swift */; };
 		065BCD6B22099D340072A656 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065BCD6A22099D340072A656 /* ViewController.swift */; };
 		065BCD6E22099D340072A656 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 065BCD6C22099D340072A656 /* Main.storyboard */; };
@@ -17,10 +16,10 @@
 		06EE046E22295FB6007C2332 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EE046B22295FB5007C2332 /* Note.swift */; };
 		06EE046F22295FB6007C2332 /* Tuner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EE046C22295FB5007C2332 /* Tuner.swift */; };
 		2C5DC86F8FE907A3B2EDD706 /* Pods_Concentration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CF7BD999AFA5C911B9F54F9 /* Pods_Concentration.framework */; };
+		717EE730223FA7A9003862C8 /* UserInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717EE72F223FA7A9003862C8 /* UserInterface.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0650F1B9223E2A3B00AB4E57 /* UserInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserInterface.swift; path = "/Users/danielmarcos/Desktop/cognitive-modelling-app/Concentration/UserInterface.swift"; sourceTree = "<absolute>"; };
 		065BCD6522099D340072A656 /* Concentration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Concentration.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		065BCD6822099D340072A656 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		065BCD6A22099D340072A656 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -33,6 +32,7 @@
 		06EE046C22295FB5007C2332 /* Tuner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tuner.swift; sourceTree = "<group>"; };
 		081FDFDF5889ACE9A13EDE42 /* Pods-Concentration.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Concentration.release.xcconfig"; path = "Target Support Files/Pods-Concentration/Pods-Concentration.release.xcconfig"; sourceTree = "<group>"; };
 		6CF7BD999AFA5C911B9F54F9 /* Pods_Concentration.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Concentration.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		717EE72F223FA7A9003862C8 /* UserInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserInterface.swift; path = "/Users/s3734277/Desktop/cognitive-modelling-app/Concentration/UserInterface.swift"; sourceTree = "<absolute>"; };
 		90877ADD02EDE3C7FF5BE8F1 /* Pods-Concentration.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Concentration.debug.xcconfig"; path = "Target Support Files/Pods-Concentration/Pods-Concentration.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -69,7 +69,7 @@
 		065BCD6722099D340072A656 /* Concentration */ = {
 			isa = PBXGroup;
 			children = (
-				0650F1B9223E2A3B00AB4E57 /* UserInterface.swift */,
+				717EE72F223FA7A9003862C8 /* UserInterface.swift */,
 				06EE046B22295FB5007C2332 /* Note.swift */,
 				06EE046A22295FB5007C2332 /* Pitch.swift */,
 				06EE046C22295FB5007C2332 /* Tuner.swift */,
@@ -217,7 +217,7 @@
 				065BCD6922099D340072A656 /* AppDelegate.swift in Sources */,
 				06EE046F22295FB6007C2332 /* Tuner.swift in Sources */,
 				06EE046D22295FB6007C2332 /* Pitch.swift in Sources */,
-				0650F1BA223E2A3B00AB4E57 /* UserInterface.swift in Sources */,
+				717EE730223FA7A9003862C8 /* UserInterface.swift in Sources */,
 				06EE046E22295FB6007C2332 /* Note.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
