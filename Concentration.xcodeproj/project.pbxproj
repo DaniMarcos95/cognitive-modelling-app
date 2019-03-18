@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0650F1BA223E2A3B00AB4E57 /* UserInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0650F1B9223E2A3B00AB4E57 /* UserInterface.swift */; };
 		065BCD6922099D340072A656 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065BCD6822099D340072A656 /* AppDelegate.swift */; };
 		065BCD6B22099D340072A656 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065BCD6A22099D340072A656 /* ViewController.swift */; };
 		065BCD6E22099D340072A656 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 065BCD6C22099D340072A656 /* Main.storyboard */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0650F1B9223E2A3B00AB4E57 /* UserInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserInterface.swift; path = "/Users/danielmarcos/Desktop/cognitive-modelling-app/Concentration/UserInterface.swift"; sourceTree = "<absolute>"; };
 		065BCD6522099D340072A656 /* Concentration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Concentration.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		065BCD6822099D340072A656 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		065BCD6A22099D340072A656 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 		065BCD6722099D340072A656 /* Concentration */ = {
 			isa = PBXGroup;
 			children = (
+				0650F1B9223E2A3B00AB4E57 /* UserInterface.swift */,
 				06EE046B22295FB5007C2332 /* Note.swift */,
 				06EE046A22295FB5007C2332 /* Pitch.swift */,
 				06EE046C22295FB5007C2332 /* Tuner.swift */,
@@ -214,6 +217,7 @@
 				065BCD6922099D340072A656 /* AppDelegate.swift in Sources */,
 				06EE046F22295FB6007C2332 /* Tuner.swift in Sources */,
 				06EE046D22295FB6007C2332 /* Pitch.swift in Sources */,
+				0650F1BA223E2A3B00AB4E57 /* UserInterface.swift in Sources */,
 				06EE046E22295FB6007C2332 /* Note.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

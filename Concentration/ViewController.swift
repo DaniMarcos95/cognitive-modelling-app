@@ -32,6 +32,7 @@ class ViewController: UIViewController, TunerDelegate {
     
     @IBOutlet var recordButton: UIButton!
     let tuner = Tuner()
+    let userInterface = UserInterface()
     var originalChord = [Double]()
     var difference = 0.0
     var stringColors = [String]()
@@ -39,8 +40,9 @@ class ViewController: UIViewController, TunerDelegate {
     @IBAction func startRecording(_ sender: Any) {
         stringColors = ["Black", "Black", "Black", "Black", "Black", "Black"]
         getChord()
-        tuner.delegate = self
-        tuner.startRecordingChord()
+        userInterface.draw()
+        //tuner.delegate = self
+        //tuner.startRecordingChord()
     }
     
     func getChord(){
