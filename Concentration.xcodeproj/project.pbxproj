@@ -17,6 +17,7 @@
 		06EE046F22295FB6007C2332 /* Tuner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EE046C22295FB5007C2332 /* Tuner.swift */; };
 		2C5DC86F8FE907A3B2EDD706 /* Pods_Concentration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CF7BD999AFA5C911B9F54F9 /* Pods_Concentration.framework */; };
 		717EE730223FA7A9003862C8 /* UserInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717EE72F223FA7A9003862C8 /* UserInterface.swift */; };
+		719FCB6A2244E643002F72F2 /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719FCB692244E643002F72F2 /* ViewController2.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		081FDFDF5889ACE9A13EDE42 /* Pods-Concentration.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Concentration.release.xcconfig"; path = "Target Support Files/Pods-Concentration/Pods-Concentration.release.xcconfig"; sourceTree = "<group>"; };
 		6CF7BD999AFA5C911B9F54F9 /* Pods_Concentration.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Concentration.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		717EE72F223FA7A9003862C8 /* UserInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserInterface.swift; path = "/Users/s3734277/Desktop/cognitive-modelling-app/Concentration/UserInterface.swift"; sourceTree = "<absolute>"; };
+		719FCB692244E643002F72F2 /* ViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
 		90877ADD02EDE3C7FF5BE8F1 /* Pods-Concentration.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Concentration.debug.xcconfig"; path = "Target Support Files/Pods-Concentration/Pods-Concentration.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -76,6 +78,7 @@
 				065BCD6822099D340072A656 /* AppDelegate.swift */,
 				065BCD6A22099D340072A656 /* ViewController.swift */,
 				065BCD6C22099D340072A656 /* Main.storyboard */,
+				719FCB692244E643002F72F2 /* ViewController2.swift */,
 				065BCD6F22099D340072A656 /* Assets.xcassets */,
 				065BCD7122099D340072A656 /* LaunchScreen.storyboard */,
 				065BCD7422099D340072A656 /* Info.plist */,
@@ -213,6 +216,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				719FCB6A2244E643002F72F2 /* ViewController2.swift in Sources */,
 				065BCD6B22099D340072A656 /* ViewController.swift in Sources */,
 				065BCD6922099D340072A656 /* AppDelegate.swift in Sources */,
 				06EE046F22295FB6007C2332 /* Tuner.swift in Sources */,

@@ -8,7 +8,7 @@
 import UIKit
 
 class UserInterface: UIView {
-    
+
     //Positions
     //string
     lazy var sE = bounds.width * 1/7
@@ -23,6 +23,24 @@ class UserInterface: UIView {
     lazy var p3 = bounds.height * 5/10
     lazy var p4 = bounds.height * 7/10
     lazy var p5 = bounds.height * 9/10
+    
+    var indexToDraw: Int = 0
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupView()
+    }
+    
+    //initWithCode to init view from xib or storyboard
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setupView()
+    }
+    
+    //common func to init our view
+    private func setupView() {
+        backgroundColor = .white
+    }
     
     //Draw Frame
     var path: UIBezierPath!
@@ -69,13 +87,16 @@ class UserInterface: UIView {
             string.stroke()
         }
     }
-    var current_string = UIBezierPath()
+    
+    
     func update(n: Int) {
+        var current_string = UIBezierPath()
         current_string.move(to: CGPoint(x: n, y:0))
         current_string.addLine(to: CGPoint(x: n, y: Int(bounds.height)))
-        UIColor.black.setStroke()
+        UIColor.blue.setStroke()
+        current_string.lineWidth = 3
         current_string.stroke()
-        let animate_string = CAShapeLayer()
+        /*let animate_string = CAShapeLayer()
         animate_string.path = current_string.cgPath
         animate_string.strokeColor = UIColor.init(red: 0, green: 1, blue: 1, alpha: 1).cgColor
         animate_string.strokeEnd = 0
@@ -84,14 +105,15 @@ class UserInterface: UIView {
         let animation = CABasicAnimation(keyPath: "strokeEnd")
         animation.fromValue = 0
         animation.toValue = 1
-        animation.duration = 2
+        animation.duration = 1
         animation.autoreverses = false
         animation.repeatCount = .infinity
-        animate_string.add(animation, forKey: "line")
-        
+        animate_string.add(animation, forKey: "line")*/
     }
-    var finished_string = UIBezierPath()
+    
+    
     func Finished(n: Int) {
+        var finished_string = UIBezierPath()
         finished_string.move(to: CGPoint(x: n, y:0))
         finished_string.addLine(to: CGPoint(x: n, y: Int(bounds.height)))
         UIColor.green.setStroke()
@@ -120,7 +142,7 @@ class UserInterface: UIView {
      animation.toValue = 1
      animation.duration = 2
      animation.autoreverses = true
-     animation.repeatCount = .infinity
+     animation.repeatCount = 1
      animate_string.add(animation, forKey: "line")
      }
      */
@@ -164,8 +186,18 @@ class UserInterface: UIView {
         }
         createTextLayer()
     }
-    
-    func draw(stringIndex: Int) {
+
+    override func draw(_ rect: CGRect) {
+        
+        let recordE = [sE]
+        let recordA = [sA, sE]
+        let recordD = [sD, sE, sA]
+        let recordG = [sG, sD, sE, sA]
+        let recordB = [sB, sG, sD, sE, sA]
+        let recorde = [se, sB, sG, sD, sE, sA]
+        
+        let stringOrder = [recordE, recordA, recordD, recordG, recordB, recorde]
+        
         self.createRectangle()
         Frets()
         Strings()
@@ -180,16 +212,7 @@ class UserInterface: UIView {
          Finished(n: Int(sA))
          
          */
-        let recordE = [sE]
-        let recordA = [sA, sE]
-        let recordD = [sD, sE, sA]
-        let recordG = [sG, sD, sE, sA]
-        let recordB = [sB, sG, sD, sE, sA]
-        let recorde = [se, sB, sG, sD, sE, sA]
-        
-        let stringOrder = [recordE, recordA, recordD, recordG, recordB, recorde]
-
-        for (index, n) in stringOrder[stringIndex].enumerated() {
+        for (index, n) in stringOrder[self.indexToDraw].enumerated() {
             if index == 0 {
                 update(n: Int(n))
             } else {
@@ -198,10 +221,11 @@ class UserInterface: UIView {
         }
         
         
+        
         let C = [[1, sB, p1],[2, sD, p2],[3, sA, p3]]
         for finger in C {
             Fingers(digit: String(Int(finger[0])), string: Int(finger[1]), fret: Int(finger[2]))
-            print(finger[0])
+            //print(finger[0])
         }
     }
 }

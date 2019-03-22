@@ -41,7 +41,7 @@ class Tuner: NSObject {
     fileprivate var timer:      Timer?
     fileprivate let microphone: AKMicrophone
     fileprivate let analyzer:   AKAudioAnalyzer
-    let amp_threshold = 0.2
+    let amp_threshold = 0.0
     var recordedChord = [Double]()
     var count = 0
 
@@ -87,6 +87,7 @@ class Tuner: NSObject {
             self.delegate?.changeStringColor(stringIndex: recordedChord.count-1)
             if(recordedChord.count == 6){
                 stopMonitoring()
+                self.delegate?.changeStringColor(stringIndex: recordedChord.count-1)
                 self.delegate?.compareChord(recordedChord: recordedChord)
             }
         }
