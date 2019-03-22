@@ -195,8 +195,8 @@ class UserInterface: UIView {
         let recordG = [sG, sD, sE, sA]
         let recordB = [sB, sG, sD, sE, sA]
         let recorde = [se, sB, sG, sD, sE, sA]
-        
-        let stringOrder = [recordE, recordA, recordD, recordG, recordB, recorde]
+        let allrecorded = [se, se, sB, sG, sD, sE, sA]
+        let stringOrder = [recordE, recordA, recordD, recordG, recordB, recorde, allrecorded]
         
         self.createRectangle()
         Frets()
