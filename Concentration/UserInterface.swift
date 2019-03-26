@@ -26,6 +26,9 @@ class UserInterface: UIView {
     
     var indexToDraw: Int = 0
     
+    var chordToPresent: String = "initializing"
+    var chordToCompare: [Double] = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -89,9 +92,9 @@ class UserInterface: UIView {
         }
     }
     
-    
+    var current_string = UIBezierPath()
     func update(n: Int) {
-        var current_string = UIBezierPath()
+        
         current_string.move(to: CGPoint(x: n, y:0))
         current_string.addLine(to: CGPoint(x: n, y: Int(bounds.height)))
         UIColor.blue.setStroke()
@@ -112,9 +115,9 @@ class UserInterface: UIView {
         animate_string.add(animation, forKey: "line")*/
     }
     
-    
+    var finished_string = UIBezierPath()
     func Finished(n: Int) {
-        var finished_string = UIBezierPath()
+        
         finished_string.move(to: CGPoint(x: n, y:0))
         finished_string.addLine(to: CGPoint(x: n, y: Int(bounds.height)))
         UIColor.green.setStroke()
@@ -174,17 +177,21 @@ class UserInterface: UIView {
         finger.lineWidth = 0
         finger.fill()
         finger.stroke()
-        func createTextLayer() {
-            let textLayer = CATextLayer()
-            textLayer.string = digit
-            textLayer.foregroundColor = UIColor.white.cgColor
-            textLayer.font = UIFont(name: "Avenir", size: 20.0)
-            textLayer.fontSize = 20.0
-            textLayer.frame = CGRect(x: string - 5, y: fret - 13, width: 20, height: 20)
-            textLayer.contentsScale = UIScreen.main.scale
-            self.layer.addSublayer(textLayer)
-        }
-        createTextLayer()
+        
+        createTextLayer(digit: digit, string: string, fret: fret)
+    }
+    
+    
+    func createTextLayer(digit: String, string: Int, fret: Int) {
+        let textLayer = CATextLayer()
+        textLayer.string = digit
+        textLayer.foregroundColor = UIColor.white.cgColor
+        textLayer.font = UIFont(name: "Avenir", size: 20.0)
+        textLayer.fontSize = 20.0
+        textLayer.frame = CGRect(x: string - 5, y: fret - 13, width: 20, height: 20)
+        textLayer.contentsScale = UIScreen.main.scale
+        self.layer.addSublayer(textLayer)
+        
     }
 
     override func draw(_ rect: CGRect) {
@@ -198,11 +205,28 @@ class UserInterface: UIView {
         let allrecorded = [se, se, sB, sG, sD, sE, sA]
         let stringOrder = [recordE, recordA, recordD, recordG, recordB, recorde, allrecorded]
         
+        var index = 0
+        let chordNamesDataset = ["A", "E", "C"]
+        
+        for chord in chordNamesDataset{
+            if chord == chordToPresent{
+                index = chordNamesDataset.firstIndex(of: chord)!
+            }
+        }
+        
         let C = [[1, sB, p1],[2, sD, p2],[3, sA, p3]]
         let A = [[3, sB, p2],[2, sG, p2],[1, sD, p2]]
-        let E = [[3, sB, p2],[2, sG, p2],[1, sD, p2]]
-        let currentChord = A
-            
+        let E = [[3, sD, p2],[2, sA, p2],[1, sG, p1]]
+        
+        let frequenciesC = [82.4, 130.8, 155.56, 196.00, 261.94, 329.63]
+        let frequenciesA = [82.4, 110.0, 164.8, 220.0, 277.2, 329.6]
+        let frequenciesE = [82.4, 123.5, 164.8, 207.6, 246.9, 329.6]
+        
+        let chordDataset = [A,E,C]
+        let frequencyDataset = [frequenciesA,frequenciesE,frequenciesC]
+        
+        let currentChord = chordDataset[index]
+        chordToCompare = frequencyDataset[index]
         self.createRectangle()
         Frets()
         Strings()
@@ -227,7 +251,6 @@ class UserInterface: UIView {
         
         for finger in currentChord {
             Fingers(digit: String(Int(finger[0])), string: Int(finger[1]), fret: Int(finger[2]))
-            //print(finger[0])
         }
     }
 }

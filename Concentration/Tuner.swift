@@ -41,7 +41,8 @@ class Tuner: NSObject {
     fileprivate var timer:      Timer?
     fileprivate let microphone: AKMicrophone
     fileprivate let analyzer:   AKAudioAnalyzer
-    let amp_threshold = 0.03
+    let amp_threshold_high = 0.1
+    let amp_threshold_low = 0.06
     var recordedChord = [Double]()
     var count = 0
 
@@ -64,7 +65,7 @@ class Tuner: NSObject {
         microphone.play()
         recordedChord = [Double]()
         /* Initialize and schedule a new run loop timer. */
-        timer = Timer.scheduledTimer(timeInterval: 0.5, target: self,
+        timer = Timer.scheduledTimer(timeInterval: 0.7, target: self,
                                      selector: #selector(tick),
                                      userInfo: nil,
                                      repeats: true)
@@ -74,32 +75,50 @@ class Tuner: NSObject {
         analyzer.stop()
         microphone.stop()
         timer?.invalidate()
-        print("terminando")
     }
 
     @objc func tick() {
         /* Read frequency and amplitude from the analyzer. */
         let frequency = Double(analyzer.trackedFrequency.floatValue)
         let amplitude = Double(analyzer.trackedAmplitude.floatValue)
-        if(amplitude > amp_threshold){
-            
-            if recordedChord.count != 0{
-                if abs(frequency - recordedChord[recordedChord.count-1]) > 30{
+        print(amplitude)
+        if(recordedChord.count < 2){
+            if(amplitude > amp_threshold_high){
+                if recordedChord.count != 0{
+                    if abs(frequency - recordedChord[recordedChord.count-1]) > 27{
+                        recordedChord.append(frequency)
+                        self.delegate?.changeStringColor(stringIndex: recordedChord.count)
+                        if(recordedChord.count == 6){
+                            stopMonitoring()
+                            //self.delegate?.changeStringColor(stringIndex: recordedChord.count-1)
+                            //self.delegate?.changeStringColor(stringIndex: recordedChord.count)
+                            self.delegate?.compareChord(recordedChord: recordedChord)
+                        }
+                    }
+                }else{
                     recordedChord.append(frequency)
-                    print(recordedChord)
                     self.delegate?.changeStringColor(stringIndex: recordedChord.count)
-                    if(recordedChord.count == 6){
-                        stopMonitoring()
-                        //self.delegate?.changeStringColor(stringIndex: recordedChord.count-1)
-                        //self.delegate?.changeStringColor(stringIndex: recordedChord.count)
-                        self.delegate?.compareChord(recordedChord: recordedChord)
+                }
+            }
+            }else{
+                if(amplitude > amp_threshold_low){
+                    if recordedChord.count != 0{
+                        if abs(frequency - recordedChord[recordedChord.count-1]) > 30{
+                            recordedChord.append(frequency)
+                            self.delegate?.changeStringColor(stringIndex: recordedChord.count)
+                            if(recordedChord.count == 6){
+                                stopMonitoring()
+                                //self.delegate?.changeStringColor(stringIndex: recordedChord.count-1)
+                                //self.delegate?.changeStringColor(stringIndex: recordedChord.count)
+                                self.delegate?.compareChord(recordedChord: recordedChord)
+                            }
+                        }
+                    }else{
+                        recordedChord.append(frequency)
+                        self.delegate?.changeStringColor(stringIndex: recordedChord.count)
                     }
                 }
-            }else{
-                recordedChord.append(frequency)
-                print(recordedChord)
-                self.delegate?.changeStringColor(stringIndex: recordedChord.count)
-            }
         }
     }
 }
+
