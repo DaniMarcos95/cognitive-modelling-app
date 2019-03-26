@@ -43,10 +43,11 @@ class ViewController2: UIViewController, TunerDelegate{
     let tuner = Tuner()
     var difference = 0.0
     
+    @IBOutlet weak var chordName: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        userInterface = UserInterface(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
+        userInterface = UserInterface(frame: CGRect(x: 55, y: 210, width: 270, height: 400))
         
         view.addSubview(userInterface)
         
@@ -58,7 +59,8 @@ class ViewController2: UIViewController, TunerDelegate{
     
     @objc func startRoutine() {
         tuner.delegate = self
+        chordName.text = "Cm7"
         tuner.startRecordingChord()
-    }
+         }
 
 }

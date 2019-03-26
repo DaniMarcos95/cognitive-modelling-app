@@ -25,6 +25,7 @@ class UserInterface: UIView {
     lazy var p5 = bounds.height * 9/10
     
     var indexToDraw: Int = 0
+    
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -179,8 +180,7 @@ class UserInterface: UIView {
             textLayer.foregroundColor = UIColor.white.cgColor
             textLayer.font = UIFont(name: "Avenir", size: 20.0)
             textLayer.fontSize = 20.0
-            //textLayer.alignmentMode = CATextLayerAlignmentMode.center
-            textLayer.frame = CGRect(x: string - 10, y: fret - 15, width: 20, height: 20)
+            textLayer.frame = CGRect(x: string - 5, y: fret - 13, width: 20, height: 20)
             textLayer.contentsScale = UIScreen.main.scale
             self.layer.addSublayer(textLayer)
         }
@@ -198,6 +198,11 @@ class UserInterface: UIView {
         let allrecorded = [se, se, sB, sG, sD, sE, sA]
         let stringOrder = [recordE, recordA, recordD, recordG, recordB, recorde, allrecorded]
         
+        let C = [[1, sB, p1],[2, sD, p2],[3, sA, p3]]
+        let A = [[3, sB, p2],[2, sG, p2],[1, sD, p2]]
+        let E = [[3, sB, p2],[2, sG, p2],[1, sD, p2]]
+        let currentChord = A
+            
         self.createRectangle()
         Frets()
         Strings()
@@ -220,10 +225,7 @@ class UserInterface: UIView {
             }
         }
         
-        
-        
-        let C = [[1, sB, p1],[2, sD, p2],[3, sA, p3]]
-        for finger in C {
+        for finger in currentChord {
             Fingers(digit: String(Int(finger[0])), string: Int(finger[1]), fret: Int(finger[2]))
             //print(finger[0])
         }
