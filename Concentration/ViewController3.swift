@@ -12,10 +12,21 @@ import UIKit
 class ViewController3: UIViewController{
     
     
+    @IBOutlet weak var feedbackText: UITextField!
     
-    @IBOutlet weak var nextChordButton: UIButton!
+    @IBOutlet weak var accuracyText: UITextField!
+    
+    @IBOutlet weak var timeText: UITextField!
     
     
-    @IBOutlet weak var backToMenuButton: UIButton!
-    
+    var userInterface: UserInterface!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        userInterface = UserInterface(frame: CGRect(x: 98, y: 297, width: 179, height: 304))
+        userInterface.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.6)
+        view.addSubview(userInterface)
+        timeText.text = "Time: \(round(10*elapsedTime)/10) seconds"
+        accuracyText.text = "Score: \(score)/1"
+    }
 }

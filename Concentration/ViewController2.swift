@@ -10,6 +10,9 @@ import Foundation
 import UIKit
 import AudioKit
 
+var elapsedTime = 0.0
+var score = 0.0
+
 class ViewController2: UIViewController, TunerDelegate{
     func compareChord(recordedChord: [Double]) {
         difference = 0
@@ -36,7 +39,7 @@ class ViewController2: UIViewController, TunerDelegate{
         }
         print("Score: \(score)")
         testing().updateModel(accuracyScore: score)
-        feedbackButton.isHidden = false
+        //feedbackButton.isHidden = false
         tuner.stopMonitoring()
     }
     
@@ -46,28 +49,28 @@ class ViewController2: UIViewController, TunerDelegate{
     }
     
   
-    @IBOutlet var feedbackButton: UIButton!
     
     @IBAction func continuePressed(_ sender: Any) {
     }
     
     var userInterface: UserInterface!
     let index    = 2
-    var score = 0.0
+    
     fileprivate var timer:      Timer?
     let tuner = Tuner()
     var difference = 0.0
     var showchunk = Chunk(s: "please", m: cogmod)
-    var elapsedTime = 0.0
+    
     var start = DispatchTime.now()
     var end = DispatchTime.now()
     @IBOutlet weak var chordName: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        feedbackButton.isHidden = true
+        //feedbackButton.isHidden = true
         start = DispatchTime.now()
-        userInterface = UserInterface(frame: CGRect(x: 55, y: 210, width: 270, height: 400))
+        userInterface = UserInterface(frame: CGRect(x: 53, y: 190, width: 269, height: 400))
+        userInterface.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.6)
         view.addSubview(userInterface)
         
         timer = Timer.scheduledTimer(timeInterval: 0.1, target: self,

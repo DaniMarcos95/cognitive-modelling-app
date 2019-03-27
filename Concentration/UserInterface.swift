@@ -206,24 +206,36 @@ class UserInterface: UIView {
         let stringOrder = [recordE, recordA, recordD, recordG, recordB, recorde, allrecorded]
         
         var index = 0
-        let chordNamesDataset = ["A", "E", "C"]
-        
+        let chordNamesDataset = ["Em","E","Am","A","C","G","D","Dm","F"]
         for chord in chordNamesDataset{
             if chord == chordToPresent{
                 index = chordNamesDataset.firstIndex(of: chord)!
             }
         }
         
-        let C = [[1, sB, p1],[2, sD, p2],[3, sA, p3]]
-        let A = [[3, sB, p2],[2, sG, p2],[1, sD, p2]]
-        let E = [[3, sD, p2],[2, sA, p2],[1, sG, p1]]
+        let C = [[3, sA, p3], [2, sD, p2], [1, sB, p1]]
+        let G = [[2, sE, p3], [1, sA, p2], [3, se, p3]]
+        let A = [[1, sD, p2], [2, sG, p2], [3, sB, p2]]
+        let D = [[1, sG, p2], [3, sB, p3], [2, se, p2]]
+        let E = [[2, sA, p2], [3, sD, p2], [1, sG, p1]]
+        let F = [[3, sD, p3], [2, sG, p2], [1, sB, p1], [1, se, p1]]
+        let Am = [[2, sD, p2], [3, sG, p2], [1, sB, p1]]
+        let Dm = [[2, sG, p2], [3, sB, p3], [1, se, p1]]
+        let Em = [[2, sA, p2], [3, sD, p2]]
+        let A7 = [[1, sD, p2], [2, sB, p2]]
         
         let frequenciesC = [82.4, 130.8, 155.56, 196.00, 261.94, 329.63]
         let frequenciesA = [82.4, 110.0, 164.8, 220.0, 277.2, 329.6]
         let frequenciesE = [82.4, 123.5, 164.8, 207.6, 246.9, 329.6]
+        let frequenciesEm = [82.4, 123.5, 164.8, 207.6, 246.9, 329.6]
+        let frequenciesAm = [82.4, 123.5, 164.8, 207.6, 246.9, 329.6]
+        let frequenciesG = [82.4, 123.5, 164.8, 207.6, 246.9, 329.6]
+        let frequenciesD = [82.4, 123.5, 164.8, 207.6, 246.9, 329.6]
+        let frequenciesDm = [82.4, 123.5, 164.8, 207.6, 246.9, 329.6]
+        let frequenciesF = [82.4, 123.5, 164.8, 207.6, 246.9, 329.6]
         
-        let chordDataset = [A,E,C]
-        let frequencyDataset = [frequenciesA,frequenciesE,frequenciesC]
+        let chordDataset = [Em,E,Am,A,C,G,D,Dm,F]
+        let frequencyDataset = [frequenciesEm,frequenciesE,frequenciesAm,frequenciesA,frequenciesC,frequenciesG,frequenciesD,frequenciesDm,frequenciesF]
         
         let currentChord = chordDataset[index]
         chordToCompare = frequencyDataset[index]

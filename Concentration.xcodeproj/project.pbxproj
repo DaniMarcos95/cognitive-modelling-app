@@ -16,8 +16,8 @@
 		06EE046E22295FB6007C2332 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EE046B22295FB5007C2332 /* Note.swift */; };
 		06EE046F22295FB6007C2332 /* Tuner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EE046C22295FB5007C2332 /* Tuner.swift */; };
 		2C5DC86F8FE907A3B2EDD706 /* Pods_Concentration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CF7BD999AFA5C911B9F54F9 /* Pods_Concentration.framework */; };
-		717B24F1224A5C7800BFF45C /* cogmodel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717B24F0224A5C7800BFF45C /* cogmodel.swift */; };
-		717B24F3224A5C8800BFF45C /* time_track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717B24F2224A5C8800BFF45C /* time_track.swift */; };
+		716988C9224BC1F2008594F2 /* time_track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716988C7224BC1F2008594F2 /* time_track.swift */; };
+		716988CC224BD5E4008594F2 /* cogmodel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716988CB224BD5E4008594F2 /* cogmodel.swift */; };
 		717B2508224A5DBB00BFF45C /* ACTRWindowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717B24F7224A5DBB00BFF45C /* ACTRWindowView.swift */; };
 		717B2509224A5DBB00BFF45C /* BufferAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717B24F8224A5DBB00BFF45C /* BufferAction.swift */; };
 		717B250A224A5DBB00BFF45C /* BufferCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717B24F9224A5DBB00BFF45C /* BufferCondition.swift */; };
@@ -53,8 +53,8 @@
 		06EE046C22295FB5007C2332 /* Tuner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tuner.swift; sourceTree = "<group>"; };
 		081FDFDF5889ACE9A13EDE42 /* Pods-Concentration.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Concentration.release.xcconfig"; path = "Target Support Files/Pods-Concentration/Pods-Concentration.release.xcconfig"; sourceTree = "<group>"; };
 		6CF7BD999AFA5C911B9F54F9 /* Pods_Concentration.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Concentration.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		717B24F0224A5C7800BFF45C /* cogmodel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = cogmodel.swift; path = ../../../Downloads/next_cogmod_attempt/next_cogmod_attempt/cogmodel.swift; sourceTree = "<group>"; };
-		717B24F2224A5C8800BFF45C /* time_track.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = time_track.swift; path = ../../../Downloads/next_cogmod_attempt/next_cogmod_attempt/time_track.swift; sourceTree = "<group>"; };
+		716988C7224BC1F2008594F2 /* time_track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = time_track.swift; path = "/Users/s3734277/Desktop/cognitive-modelling-app/Concentration/time_track.swift"; sourceTree = "<absolute>"; };
+		716988CB224BD5E4008594F2 /* cogmodel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cogmodel.swift; sourceTree = "<group>"; };
 		717B24F7224A5DBB00BFF45C /* ACTRWindowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACTRWindowView.swift; sourceTree = "<group>"; };
 		717B24F8224A5DBB00BFF45C /* BufferAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BufferAction.swift; sourceTree = "<group>"; };
 		717B24F9224A5DBB00BFF45C /* BufferCondition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BufferCondition.swift; sourceTree = "<group>"; };
@@ -112,7 +112,8 @@
 		065BCD6722099D340072A656 /* Concentration */ = {
 			isa = PBXGroup;
 			children = (
-				717B24F0224A5C7800BFF45C /* cogmodel.swift */,
+				716988CB224BD5E4008594F2 /* cogmodel.swift */,
+				716988C7224BC1F2008594F2 /* time_track.swift */,
 				717EE72F223FA7A9003862C8 /* UserInterface.swift */,
 				06EE046B22295FB5007C2332 /* Note.swift */,
 				717B2519224A73C200BFF45C /* ViewController3.swift */,
@@ -121,7 +122,6 @@
 				065BCD6822099D340072A656 /* AppDelegate.swift */,
 				065BCD6A22099D340072A656 /* ViewController.swift */,
 				065BCD6C22099D340072A656 /* Main.storyboard */,
-				717B24F2224A5C8800BFF45C /* time_track.swift */,
 				719FCB692244E643002F72F2 /* ViewController2.swift */,
 				065BCD6F22099D340072A656 /* Assets.xcassets */,
 				065BCD7122099D340072A656 /* LaunchScreen.storyboard */,
@@ -291,10 +291,8 @@
 				717B2511224A5DBB00BFF45C /* Procedural.swift in Sources */,
 				717B2508224A5DBB00BFF45C /* ACTRWindowView.swift in Sources */,
 				065BCD6922099D340072A656 /* AppDelegate.swift in Sources */,
-				717B24F1224A5C7800BFF45C /* cogmodel.swift in Sources */,
 				717B250A224A5DBB00BFF45C /* BufferCondition.swift in Sources */,
 				717B2515224A5DBB00BFF45C /* Support.swift in Sources */,
-				717B24F3224A5C8800BFF45C /* time_track.swift in Sources */,
 				717B2518224A5DBB00BFF45C /* Vision.swift in Sources */,
 				717B2512224A5DBB00BFF45C /* Production.swift in Sources */,
 				06EE046F22295FB6007C2332 /* Tuner.swift in Sources */,
@@ -302,6 +300,7 @@
 				717B250F224A5DBB00BFF45C /* Model.swift in Sources */,
 				06EE046D22295FB6007C2332 /* Pitch.swift in Sources */,
 				717EE730223FA7A9003862C8 /* UserInterface.swift in Sources */,
+				716988C9224BC1F2008594F2 /* time_track.swift in Sources */,
 				717B2514224A5DBB00BFF45C /* SlotCondition.swift in Sources */,
 				717B2513224A5DBB00BFF45C /* SlotAction.swift in Sources */,
 				717B251A224A73C200BFF45C /* ViewController3.swift in Sources */,
@@ -311,6 +310,7 @@
 				717B2509224A5DBB00BFF45C /* BufferAction.swift in Sources */,
 				717B250D224A5DBB00BFF45C /* FocusRing.swift in Sources */,
 				06EE046E22295FB6007C2332 /* Note.swift in Sources */,
+				716988CC224BD5E4008594F2 /* cogmodel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

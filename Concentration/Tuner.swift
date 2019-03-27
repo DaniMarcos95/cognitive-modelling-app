@@ -41,8 +41,10 @@ class Tuner: NSObject {
     fileprivate var timer:      Timer?
     fileprivate let microphone: AKMicrophone
     fileprivate let analyzer:   AKAudioAnalyzer
-    let amp_threshold_high = 0.1
-    let amp_threshold_low = 0.06
+    //let amp_threshold_high = 0.1
+    //let amp_threshold_low = 0.06
+    let amp_threshold_high = 0.0
+    let amp_threshold_low = 0.0
     var recordedChord = [Double]()
     var count = 0
 

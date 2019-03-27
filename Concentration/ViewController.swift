@@ -30,7 +30,7 @@ class ViewController: UIViewController, TunerDelegate {
         }
     }
     
-    @IBOutlet var recordButton: UIButton!
+    //@IBOutlet var recordButton: UIButton!
     
     let tuner = Tuner()
     var originalChord = [Double]()
@@ -39,14 +39,14 @@ class ViewController: UIViewController, TunerDelegate {
     let rect = CGRect()
     let index = 2
     
-    @IBAction func startRecording(_ sender: Any) {
+    /*@IBAction func startRecording(_ sender: Any) {
         stringColors = ["Black", "Black", "Black", "Black", "Black", "Black"]
         getChord()
         
         //userInterface.draw(stringIndex: index)
         //tuner.delegate = self
         //tuner.startRecordingChord()
-    }
+    }8*/
     
     func getChord(){
         originalChord = [96.0, 123.0, 45.0, 123.0, 97.0, 65.0]
