@@ -83,7 +83,7 @@ class Tuner: NSObject {
         /* Read frequency and amplitude from the analyzer. */
         let frequency = Double(analyzer.trackedFrequency.floatValue)
         let amplitude = Double(analyzer.trackedAmplitude.floatValue)
-        print(amplitude)
+        //print(amplitude)
         if(recordedChord.count < 2){
             if(amplitude > amp_threshold_high){
                 if recordedChord.count != 0{

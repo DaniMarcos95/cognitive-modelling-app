@@ -15,8 +15,11 @@
 		06EE046D22295FB6007C2332 /* Pitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EE046A22295FB5007C2332 /* Pitch.swift */; };
 		06EE046E22295FB6007C2332 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EE046B22295FB5007C2332 /* Note.swift */; };
 		06EE046F22295FB6007C2332 /* Tuner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EE046C22295FB5007C2332 /* Tuner.swift */; };
-		2C5DC86F8FE907A3B2EDD706 /* Pods_Concentration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CF7BD999AFA5C911B9F54F9 /* Pods_Concentration.framework */; };
-		716988C9224BC1F2008594F2 /* time_track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716988C7224BC1F2008594F2 /* time_track.swift */; };
+		2522D9C2224BDABB007EAA8B /* time_track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2522D9C1224BDABB007EAA8B /* time_track.swift */; };
+		2522D9C4224BDAC3007EAA8B /* UserInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2522D9C3224BDAC3007EAA8B /* UserInterface.swift */; };
+		2522D9C6224BE862007EAA8B /* time_track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2522D9C5224BE862007EAA8B /* time_track.swift */; };
+		2C5DC86F8FE907A3B2EDD706 /* Pods_Concentration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CF7BD999AFA5C911B9F54F9 /* Pods_Concentration.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		716988C9224BC1F2008594F2 /* cognitive-modelling-app in Sources */ = {isa = PBXBuildFile; fileRef = 716988C7224BC1F2008594F2 /* cognitive-modelling-app */; };
 		716988CC224BD5E4008594F2 /* cogmodel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716988CB224BD5E4008594F2 /* cogmodel.swift */; };
 		717B2508224A5DBB00BFF45C /* ACTRWindowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717B24F7224A5DBB00BFF45C /* ACTRWindowView.swift */; };
 		717B2509224A5DBB00BFF45C /* BufferAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717B24F8224A5DBB00BFF45C /* BufferAction.swift */; };
@@ -36,7 +39,6 @@
 		717B2517224A5DBB00BFF45C /* Tokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717B2506224A5DBB00BFF45C /* Tokenizer.swift */; };
 		717B2518224A5DBB00BFF45C /* Vision.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717B2507224A5DBB00BFF45C /* Vision.swift */; };
 		717B251A224A73C200BFF45C /* ViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717B2519224A73C200BFF45C /* ViewController3.swift */; };
-		717EE730223FA7A9003862C8 /* UserInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717EE72F223FA7A9003862C8 /* UserInterface.swift */; };
 		719FCB6A2244E643002F72F2 /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719FCB692244E643002F72F2 /* ViewController2.swift */; };
 /* End PBXBuildFile section */
 
@@ -52,8 +54,11 @@
 		06EE046B22295FB5007C2332 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		06EE046C22295FB5007C2332 /* Tuner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tuner.swift; sourceTree = "<group>"; };
 		081FDFDF5889ACE9A13EDE42 /* Pods-Concentration.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Concentration.release.xcconfig"; path = "Target Support Files/Pods-Concentration/Pods-Concentration.release.xcconfig"; sourceTree = "<group>"; };
+		2522D9C1224BDABB007EAA8B /* time_track.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = time_track.swift; sourceTree = "<group>"; };
+		2522D9C3224BDAC3007EAA8B /* UserInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInterface.swift; sourceTree = "<group>"; };
+		2522D9C5224BE862007EAA8B /* time_track.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = time_track.swift; sourceTree = "<group>"; };
 		6CF7BD999AFA5C911B9F54F9 /* Pods_Concentration.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Concentration.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		716988C7224BC1F2008594F2 /* time_track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = time_track.swift; path = "/Users/s3734277/Desktop/cognitive-modelling-app/Concentration/time_track.swift"; sourceTree = "<absolute>"; };
+		716988C7224BC1F2008594F2 /* cognitive-modelling-app */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "cognitive-modelling-app"; path = "/Users/s2542463/Documents/dani_repos/cognitive-modelling-app"; sourceTree = "<absolute>"; };
 		716988CB224BD5E4008594F2 /* cogmodel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cogmodel.swift; sourceTree = "<group>"; };
 		717B24F7224A5DBB00BFF45C /* ACTRWindowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACTRWindowView.swift; sourceTree = "<group>"; };
 		717B24F8224A5DBB00BFF45C /* BufferAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BufferAction.swift; sourceTree = "<group>"; };
@@ -73,7 +78,6 @@
 		717B2506224A5DBB00BFF45C /* Tokenizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tokenizer.swift; sourceTree = "<group>"; };
 		717B2507224A5DBB00BFF45C /* Vision.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vision.swift; sourceTree = "<group>"; };
 		717B2519224A73C200BFF45C /* ViewController3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController3.swift; sourceTree = "<group>"; };
-		717EE72F223FA7A9003862C8 /* UserInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserInterface.swift; path = "/Users/s3734277/Desktop/cognitive-modelling-app/Concentration/UserInterface.swift"; sourceTree = "<absolute>"; };
 		719FCB692244E643002F72F2 /* ViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
 		90877ADD02EDE3C7FF5BE8F1 /* Pods-Concentration.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Concentration.debug.xcconfig"; path = "Target Support Files/Pods-Concentration/Pods-Concentration.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -113,8 +117,10 @@
 			isa = PBXGroup;
 			children = (
 				716988CB224BD5E4008594F2 /* cogmodel.swift */,
-				716988C7224BC1F2008594F2 /* time_track.swift */,
-				717EE72F223FA7A9003862C8 /* UserInterface.swift */,
+				716988C7224BC1F2008594F2 /* cognitive-modelling-app */,
+				2522D9C3224BDAC3007EAA8B /* UserInterface.swift */,
+				2522D9C1224BDABB007EAA8B /* time_track.swift */,
+				2522D9C5224BE862007EAA8B /* time_track.swift */,
 				06EE046B22295FB5007C2332 /* Note.swift */,
 				717B2519224A73C200BFF45C /* ViewController3.swift */,
 				06EE046A22295FB5007C2332 /* Pitch.swift */,
@@ -299,8 +305,8 @@
 				717B2516224A5DBB00BFF45C /* Temporal.swift in Sources */,
 				717B250F224A5DBB00BFF45C /* Model.swift in Sources */,
 				06EE046D22295FB6007C2332 /* Pitch.swift in Sources */,
-				717EE730223FA7A9003862C8 /* UserInterface.swift in Sources */,
-				716988C9224BC1F2008594F2 /* time_track.swift in Sources */,
+				716988C9224BC1F2008594F2 /* cognitive-modelling-app in Sources */,
+				2522D9C4224BDAC3007EAA8B /* UserInterface.swift in Sources */,
 				717B2514224A5DBB00BFF45C /* SlotCondition.swift in Sources */,
 				717B2513224A5DBB00BFF45C /* SlotAction.swift in Sources */,
 				717B251A224A73C200BFF45C /* ViewController3.swift in Sources */,
@@ -310,6 +316,8 @@
 				717B2509224A5DBB00BFF45C /* BufferAction.swift in Sources */,
 				717B250D224A5DBB00BFF45C /* FocusRing.swift in Sources */,
 				06EE046E22295FB6007C2332 /* Note.swift in Sources */,
+				2522D9C2224BDABB007EAA8B /* time_track.swift in Sources */,
+				2522D9C6224BE862007EAA8B /* time_track.swift in Sources */,
 				716988CC224BD5E4008594F2 /* cogmodel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

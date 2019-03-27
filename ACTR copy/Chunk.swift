@@ -9,6 +9,8 @@
 import Foundation
 
 class Chunk: CustomStringConvertible {
+    
+    var listBeta:[Double] = []
     /// The beta based on accuracy
     var beta: Double = 1
     /// Name of the chunk

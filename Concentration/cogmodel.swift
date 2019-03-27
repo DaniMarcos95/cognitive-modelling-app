@@ -84,6 +84,7 @@ class testing {
         //self.shownchunk = chordsList[i]
         var temp = timer.stop()
         print("time is \(temp)")
+        chordsList[i].listBeta.append(0.1)
         return chordsList[i]
     }
     
@@ -122,6 +123,7 @@ class testing {
         probechunk.setSlot(slot: "type", value: "Chord")
         let (latency, retrieveResult) = cogmod.dm.retrieve(chunk: probechunk)
         printDM()
+        
 
         print("We retrieved:")
         print (retrieveResult)
@@ -159,7 +161,10 @@ class testing {
         let something = cogmod.dm.addToDMOrStrengthen(chunk: shownchunk[i])
         cogmod.time += 1
         printDM()
+        shownchunk[i].listBeta.append(accuracyScore)
         //print(shownchunk[i].referenceList)
+        print("previous encounters listed: \(shownchunk[i].referenceList)")
+        print("previous correctness listed: \(shownchunk[i].listBeta)")
     
     }
 }
