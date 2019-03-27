@@ -56,6 +56,7 @@
                     </view>
                     <connections>
                         <outlet property="chordName" destination="I3Z-yh-HuX" id="pV5-8R-gzm"/>
+                        <outlet property="continueButton" destination="3P9-Xq-l3i" id="E3Y-U6-GZC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Csj-qF-gsZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -217,6 +218,7 @@
         <image name="slider-wood" width="800" height="1500"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="e8G-MQ-8ZZ"/>
         <segue reference="kKG-7a-zMz"/>
     </inferredMetricsTieBreakers>
 </document>

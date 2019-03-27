@@ -26,10 +26,13 @@ class UserInterface: UIView {
     
     var indexToDraw: Int = 0
     
+    var displayOption = true
+    
     var chordToPresent: String = "initializing"
     var chordToCompare: [Double] = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
     
-
+    var chunkList: [(String,Double,[Double])] = []
+    var activationLevel = 0.0
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -227,12 +230,12 @@ class UserInterface: UIView {
         let frequenciesC = [82.4, 130.8, 155.56, 196.00, 261.94, 329.63]
         let frequenciesA = [82.4, 110.0, 164.8, 220.0, 277.2, 329.6]
         let frequenciesE = [82.4, 123.5, 164.8, 207.6, 246.9, 329.6]
-        let frequenciesEm = [82.4, 123.5, 164.8, 207.6, 246.9, 329.6]
-        let frequenciesAm = [82.4, 123.5, 164.8, 207.6, 246.9, 329.6]
-        let frequenciesG = [82.4, 123.5, 164.8, 207.6, 246.9, 329.6]
-        let frequenciesD = [82.4, 123.5, 164.8, 207.6, 246.9, 329.6]
-        let frequenciesDm = [82.4, 123.5, 164.8, 207.6, 246.9, 329.6]
-        let frequenciesF = [82.4, 123.5, 164.8, 207.6, 246.9, 329.6]
+        let frequenciesEm = [82.41, 123.47, 164.81, 196.0, 246.94, 329.63]
+        let frequenciesAm = [82.41, 110.0, 164.81, 220.0, 261.63, 329.63]
+        let frequenciesG = [98.0, 123.47, 146.83, 196.0, 293.66, 392.0]
+        let frequenciesD = [82.41, 110.0, 146.83, 220.0, 293.66, 369.99]
+        let frequenciesDm = [82.41, 110.0, 146.83, 220.0, 293.66, 349.23]
+        let frequenciesF = [87.31, 130.81,174.61, 220.0, 261.63, 349.23]
         
         let chordDataset = [Em,E,Am,A,C,G,D,Dm,F]
         let frequencyDataset = [frequenciesEm,frequenciesE,frequenciesAm,frequenciesA,frequenciesC,frequenciesG,frequenciesD,frequenciesDm,frequenciesF]
@@ -253,6 +256,19 @@ class UserInterface: UIView {
          Finished(n: Int(sA))
          
          */
+        
+        retrieveActivation()
+        
+        for (chord,actLvl,numberOfTimes) in chunkList{
+            if chord == chordToPresent{
+                if(numberOfTimes.count > 1){
+                    activationLevel = actLvl
+                }else{
+                    activationLevel = -300
+                }
+            }
+        }
+        
         for (index, n) in stringOrder[self.indexToDraw].enumerated() {
             if index == 0 {
                 update(n: Int(n))
@@ -260,9 +276,24 @@ class UserInterface: UIView {
                 Finished(n: Int(n))
             }
         }
-        
-        for finger in currentChord {
-            Fingers(digit: String(Int(finger[0])), string: Int(finger[1]), fret: Int(finger[2]))
+        print("activation level = \(activationLevel)")
+        if(activationLevel < -1 || displayOption == false){
+            for finger in currentChord {
+                Fingers(digit: String(Int(finger[0])), string: Int(finger[1]), fret: Int(finger[2]))
+            }
+            displayOption = true
+        }
+    }
+    
+    func retrieveActivation (){
+        for (_,chunk) in cogmod.dm.chunks {
+            cogmod.time += 1
+            
+            let chunkTp = chunk.slotvals
+            let chunkType = chunkTp == nil ? "No Type" : chunkTp.description
+            chunkList.append((chunk.name,chunk.activation(),chunk.referenceList))
+            
+            
         }
     }
 }

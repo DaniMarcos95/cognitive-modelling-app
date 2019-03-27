@@ -25,8 +25,10 @@ class ViewController3: UIViewController{
         super.viewDidLoad()
         userInterface = UserInterface(frame: CGRect(x: 98, y: 297, width: 179, height: 304))
         userInterface.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.6)
+        userInterface.chordToPresent = chordBeingPlayed
+        userInterface.displayOption = false
         view.addSubview(userInterface)
         timeText.text = "Time: \(round(10*elapsedTime)/10) seconds"
-        accuracyText.text = "Score: \(score)/1"
+        accuracyText.text = "Score: \(score)/1.0"
     }
 }

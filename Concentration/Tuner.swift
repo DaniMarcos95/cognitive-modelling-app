@@ -41,10 +41,10 @@ class Tuner: NSObject {
     fileprivate var timer:      Timer?
     fileprivate let microphone: AKMicrophone
     fileprivate let analyzer:   AKAudioAnalyzer
-    //let amp_threshold_high = 0.1
-    //let amp_threshold_low = 0.06
-    let amp_threshold_high = 0.0
-    let amp_threshold_low = 0.0
+    let amp_threshold_high = 0.08
+    let amp_threshold_low = 0.05
+    //let amp_threshold_high = 0.0
+    //let amp_threshold_low = 0.0
     var recordedChord = [Double]()
     var count = 0
 
@@ -85,9 +85,9 @@ class Tuner: NSObject {
         let amplitude = Double(analyzer.trackedAmplitude.floatValue)
         print(amplitude)
         if(recordedChord.count < 2){
-            if(amplitude > amp_threshold_high){
+            if(amplitude > amp_threshold_high && frequency > 80){
                 if recordedChord.count != 0{
-                    if abs(frequency - recordedChord[recordedChord.count-1]) > 27{
+                    if abs(frequency - recordedChord[recordedChord.count-1]) > 20{
                         recordedChord.append(frequency)
                         self.delegate?.changeStringColor(stringIndex: recordedChord.count)
                         if(recordedChord.count == 6){
@@ -103,9 +103,9 @@ class Tuner: NSObject {
                 }
             }
             }else{
-                if(amplitude > amp_threshold_low){
+                if(amplitude > amp_threshold_low && frequency > 100){
                     if recordedChord.count != 0{
-                        if abs(frequency - recordedChord[recordedChord.count-1]) > 30{
+                        if abs(frequency - recordedChord[recordedChord.count-1]) > 20{
                             recordedChord.append(frequency)
                             self.delegate?.changeStringColor(stringIndex: recordedChord.count)
                             if(recordedChord.count == 6){

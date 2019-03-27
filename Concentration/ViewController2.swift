@@ -12,6 +12,7 @@ import AudioKit
 
 var elapsedTime = 0.0
 var score = 0.0
+var chordBeingPlayed = "Nothing yet"
 
 class ViewController2: UIViewController, TunerDelegate{
     func compareChord(recordedChord: [Double]) {
@@ -39,6 +40,7 @@ class ViewController2: UIViewController, TunerDelegate{
         }
         print("Score: \(score)")
         testing().updateModel(accuracyScore: score)
+        continueButton.isHidden = false
         //feedbackButton.isHidden = false
         tuner.stopMonitoring()
     }
@@ -61,6 +63,8 @@ class ViewController2: UIViewController, TunerDelegate{
     var difference = 0.0
     var showchunk = Chunk(s: "please", m: cogmod)
     
+    @IBOutlet weak var continueButton: UIButton!
+    
     var start = DispatchTime.now()
     var end = DispatchTime.now()
     @IBOutlet weak var chordName: UITextField!
@@ -69,6 +73,7 @@ class ViewController2: UIViewController, TunerDelegate{
         super.viewDidLoad()
         //feedbackButton.isHidden = true
         start = DispatchTime.now()
+        continueButton.isHidden = true
         userInterface = UserInterface(frame: CGRect(x: 53, y: 190, width: 269, height: 400))
         userInterface.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.6)
         view.addSubview(userInterface)
@@ -82,6 +87,7 @@ class ViewController2: UIViewController, TunerDelegate{
     @objc func startRoutine() {
         tuner.delegate = self
         chordName.text = StartCogMod()
+        chordBeingPlayed = chordName.text!
         userInterface.setNeedsDisplay()
         tuner.startRecordingChord()
     }

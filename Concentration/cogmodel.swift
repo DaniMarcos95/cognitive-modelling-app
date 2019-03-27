@@ -37,6 +37,7 @@ class testing {
             let chunkTp = chunk.slotvals
             let chunkType = chunkTp == nil ? "No Type" : chunkTp.description
             chunkList.append((chunk.name,chunk.activation()))
+            
         }
         print(chunkList)
 
@@ -91,17 +92,17 @@ class testing {
         var chosenchord = retrieveNext()
         if chosenchord == nil {
             print("it was nil, we choose next chord")
-            if indexcount < 8 {
+            if indexcount < 9 {
                 let temp = addnewchord(chordsList: chordsList )
                 chosenchord = temp
                 print("added a new chord")
                 print(chosenchord)
                 shownchunk.append(chosenchord!)
 
-            } else if indexcount >= 8{
+            } else if indexcount >= 9{
                 print("all chords have been presentend")
-                cogmod.dm.retrievalThreshold = -100000
-                //print(cogmod.dm.retrievalThreshold)
+                cogmod.dm.retrievalThreshold = 100000
+                print(cogmod.dm.retrievalThreshold)
                 let temp = retrieveNext()
                 chosenchord = temp
             }
@@ -116,6 +117,7 @@ class testing {
     //call this func before they want to play chord (to choose what comes next): "
     func retrieveNext ()  -> Chunk? {
         var temp = timer.stop()
+        print("hreshold: \(cogmod.dm.retrievalThreshold)")
         print("time is \(temp)")
         cogmod.time += temp
         let probechunk = cogmod.generateNewChunk(string: "toretrieve")
