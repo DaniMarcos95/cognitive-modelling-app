@@ -27,6 +27,7 @@ class UserInterface: UIView {
     var indexToDraw: Int = 0
     
     var displayOption = true
+    var showFeedback = false
     
     var chordToPresent: String = "initializing"
     var chordToCompare: [Double] = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
@@ -127,6 +128,76 @@ class UserInterface: UIView {
         finished_string.lineWidth = 3
         finished_string.stroke()
     }
+    
+    func drawGreenFeedback(n: Int) {
+        var feedback_green_string = UIBezierPath()
+        feedback_green_string.move(to: CGPoint(x: n, y:0))
+        feedback_green_string.addLine(to: CGPoint(x: n, y: Int(bounds.height)))
+        UIColor.green.setStroke()
+        feedback_green_string.lineWidth = 3
+        feedback_green_string.stroke()
+    }
+    
+    func drawRedFeedback(n: Int) {
+        var feedback_red_string = UIBezierPath()
+        feedback_red_string.move(to: CGPoint(x: n, y:0))
+        feedback_red_string.addLine(to: CGPoint(x: n, y: Int(bounds.height)))
+        UIColor.red.setStroke()
+        feedback_red_string.lineWidth = 3
+        feedback_red_string.stroke()
+    }
+    
+    
+    func drawFeedback(n: [Int], index: Int, color: [UIColor]) {
+        print("NNNN: \(n)")
+        var feedback_string1 = UIBezierPath()
+        var feedback_string2 = UIBezierPath()
+        var feedback_string3 = UIBezierPath()
+        var feedback_string4 = UIBezierPath()
+        var feedback_string5 = UIBezierPath()
+        var feedback_string6 = UIBezierPath()
+        feedback_string1.move(to: CGPoint(x: n[0], y:0))
+        feedback_string1.addLine(to: CGPoint(x: n[0], y: Int(bounds.height)))
+        UIColor.red.setStroke()
+        //UIColor.red.setStroke()
+        feedback_string1.lineWidth = 3
+        feedback_string1.stroke()
+        
+        feedback_string2.move(to: CGPoint(x: n[1], y:0))
+        feedback_string2.addLine(to: CGPoint(x: n[1], y: Int(bounds.height)))
+        UIColor.red.setStroke()
+        //UIColor.red.setStroke()
+        feedback_string2.lineWidth = 3
+        feedback_string2.stroke()
+        
+        feedback_string3.move(to: CGPoint(x: n[2], y:0))
+        feedback_string3.addLine(to: CGPoint(x: n[2], y: Int(bounds.height)))
+        UIColor.green.setStroke()
+        //UIColor.red.setStroke()
+        feedback_string3.lineWidth = 3
+        feedback_string3.stroke()
+        
+        feedback_string4.move(to: CGPoint(x: n[3], y:0))
+        feedback_string4.addLine(to: CGPoint(x: n[3], y: Int(bounds.height)))
+        UIColor.green.setStroke()
+        //UIColor.red.setStroke()
+        feedback_string4.lineWidth = 3
+        feedback_string4.stroke()
+        
+        feedback_string5.move(to: CGPoint(x: n[4], y:0))
+        feedback_string5.addLine(to: CGPoint(x: n[4], y: Int(bounds.height)))
+        UIColor.red.setStroke()
+        //UIColor.red.setStroke()
+        feedback_string5.lineWidth = 3
+        feedback_string5.stroke()
+        
+        feedback_string6.move(to: CGPoint(x: n[5], y:0))
+        feedback_string6.addLine(to: CGPoint(x: n[5], y: Int(bounds.height)))
+        UIColor.green.setStroke()
+        //UIColor.red.setStroke()
+        feedback_string6.lineWidth = 3
+        feedback_string6.stroke()
+    }
     //animate_string.strokeColor = UIColor.init(red: 0, green: 1, blue: 0, alpha: 1).cgColor
     
     
@@ -221,7 +292,7 @@ class UserInterface: UIView {
         let A = [[1, sD, p2], [2, sG, p2], [3, sB, p2]]
         let D = [[1, sG, p2], [3, sB, p3], [2, se, p2]]
         let E = [[2, sA, p2], [3, sD, p2], [1, sG, p1]]
-        let F = [[3, sD, p3], [2, sG, p2], [1, sB, p1], [1, se, p1]]
+        let F = [[1, sE, p1], [3, sA, p3], [4, sD, p3], [2, sG, p2], [1, sB, p1], [1, se, p1]]
         let Am = [[2, sD, p2], [3, sG, p2], [1, sB, p1]]
         let Dm = [[2, sG, p2], [3, sB, p3], [1, se, p1]]
         let Em = [[2, sA, p2], [3, sD, p2]]
@@ -276,7 +347,20 @@ class UserInterface: UIView {
                 Finished(n: Int(n))
             }
         }
-        print("activation level = \(activationLevel)")
+        
+        if(showFeedback == true){
+            let aux = correctStrings[0]
+            correctStrings[0] = correctStrings[1]
+            correctStrings[1] = aux
+            for (index, n) in recorde.enumerated() {
+                if(correctStrings[5-index] == false){
+                    drawRedFeedback(n: Int(n))
+                }else{
+                    drawGreenFeedback(n: Int(n))
+                }
+            }
+        }
+        
         if(activationLevel < -1 || displayOption == false){
             for finger in currentChord {
                 Fingers(digit: String(Int(finger[0])), string: Int(finger[1]), fret: Int(finger[2]))

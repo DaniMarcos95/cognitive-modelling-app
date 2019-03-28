@@ -9,6 +9,9 @@
 import Foundation
 import UIKit
 
+
+var  feedbackColors = [UIColor.red, UIColor.red, UIColor.red, UIColor.red, UIColor.red, UIColor.red]
+
 class ViewController3: UIViewController{
     
     
@@ -27,6 +30,7 @@ class ViewController3: UIViewController{
         userInterface.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.6)
         userInterface.chordToPresent = chordBeingPlayed
         userInterface.displayOption = false
+        userInterface.showFeedback = true
         view.addSubview(userInterface)
         timeText.text = "Time: \(round(10*elapsedTime)/10) seconds"
         accuracyText.text = "Score: \(score)/1.0"

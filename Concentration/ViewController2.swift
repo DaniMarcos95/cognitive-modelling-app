@@ -13,11 +13,13 @@ import AudioKit
 var elapsedTime = 0.0
 var score = 0.0
 var chordBeingPlayed = "Nothing yet"
+var correctStrings = [false, false, false, false, false, false]
 
 class ViewController2: UIViewController, TunerDelegate{
     func compareChord(recordedChord: [Double]) {
         difference = 0
         score = 0
+        correctStrings = [false, false, false, false, false, false]
         //let originalChord = [82.4, 130.8, 155.56, 196.00, 261.94, 329.63]
         end = DispatchTime.now()
         let scaleTime = 1000000000.0
@@ -29,12 +31,18 @@ class ViewController2: UIViewController, TunerDelegate{
             score += 30*(elapsedTime-10)
         }
         for i in 0...recordedChord.count-1 {
-            difference += abs(recordedChord[i] - userInterface.chordToCompare[i])
-            if difference > 5{
+            let new_difference = abs(recordedChord[i] - userInterface.chordToCompare[i])
+            difference += new_difference
+            if new_difference > 5{
                 score += 10*difference
+                correctStrings[i] = false
+                print("false: \(correctStrings)")
+            }else{
+                correctStrings[i] = true
+                print("correct: \(correctStrings)")
             }
         }
-        score = 1 - (score/1500)
+        score = 1 - (score/1700)
         if score < 0{
             score = 0.01
         }
