@@ -9,6 +9,8 @@
 import Foundation
 
 class Chunk: CustomStringConvertible {
+    
+    var listBeta:[Double] = []
     /// The beta based on accuracy
     var beta: Double = 1
     /// Name of the chunk
@@ -105,6 +107,7 @@ Set the baselevel of a chunk
     - returns: The activation
     */
     func baseLevelActivation () -> Double {
+        var answer = 0.0
         if creationTime == nil { return 0 }
         if fixedActivation != nil {
             return fixedActivation!
@@ -115,8 +118,23 @@ Set the baselevel of a chunk
             let y = model.dm.baseLevelDecay! + log(model.time - creationTime!)
             return x - y
         } else {
-            //print(self.beta)
-            return   log(self.referenceList.map{ self.beta * ( pow((self.model.time - $0),(-self.model.dm.baseLevelDecay!)))}.reduce(0.0, + )) // Wew! almost lisp! This is the standard baselevel equation
+            print(self.listBeta)
+            print(self.referenceList)
+            var sum = 0.0
+            for i in 0..<referenceList.endIndex {
+                var temp =  pow((self.model.time - referenceList[i]), -self.model.dm.baseLevelDecay!)
+                sum += (temp*self.listBeta[i])
+                
+                var answer = log(sum)
+                //print ("my calculation is; \(answer)")
+
+            }
+            /*
+            let testingorginal =   log(self.referenceList.map{ self.beta * ( pow((self.model.time - $0),(-self.model.dm.baseLevelDecay!)))}.reduce(0.0, + )) // Wew! almost lisp! This is the standard baselevel equation
+        
+            print("niels calucated: \(testingorginal)")
+            */
+            return answer
         }
     }
     

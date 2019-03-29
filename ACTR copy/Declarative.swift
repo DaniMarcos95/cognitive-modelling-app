@@ -10,7 +10,7 @@ import Foundation
 
 class Declarative  {
     /// Baselevel decay parameter, d in the equations, or bll in ACT-R
-    var baseLevelDecay: Double? = 0.06
+    var baseLevelDecay: Double? = 0.01
     /// Is optimized learning on or off (ol in ACT-R)
     var optimizedLearning = false
     /// Maximum associate strength parameter (mas in ACT-R). If this parameter is too low you can get negative Sji's!

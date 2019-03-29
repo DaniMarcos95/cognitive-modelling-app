@@ -84,15 +84,13 @@ class Tuner: NSObject {
         let frequency = Double(analyzer.trackedFrequency.floatValue)
         let amplitude = Double(analyzer.trackedAmplitude.floatValue)
         if(recordedChord.count < 2){
-            if(amplitude > amp_threshold_high && frequency > 80 && frequency < 120){
+            if(amplitude > amp_threshold_high && frequency > 80){
                 if recordedChord.count != 0{
                     if abs(frequency - recordedChord[recordedChord.count-1]) > 20{
                         recordedChord.append(frequency)
                         self.delegate?.changeStringColor(stringIndex: recordedChord.count)
-                        if(recordedChord.count == 6){
+                        if(recordedChord.count == numOfRecords){
                             stopMonitoring()
-                            //self.delegate?.changeStringColor(stringIndex: recordedChord.count-1)
-                            //self.delegate?.changeStringColor(stringIndex: recordedChord.count)
                             self.delegate?.compareChord(recordedChord: recordedChord)
                         }
                     }
@@ -107,10 +105,8 @@ class Tuner: NSObject {
                         if abs(frequency - recordedChord[recordedChord.count-1]) > 20{
                             recordedChord.append(frequency)
                             self.delegate?.changeStringColor(stringIndex: recordedChord.count)
-                            if(recordedChord.count == 6){
+                            if(recordedChord.count == numOfRecords){
                                 stopMonitoring()
-                                //self.delegate?.changeStringColor(stringIndex: recordedChord.count-1)
-                                //self.delegate?.changeStringColor(stringIndex: recordedChord.count)
                                 self.delegate?.compareChord(recordedChord: recordedChord)
                             }
                         }

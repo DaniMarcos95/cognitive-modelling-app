@@ -27,7 +27,7 @@ class testing {
     let em = cogmod.generateNewChunk(string: "Em")
     let dm = cogmod.generateNewChunk(string: "Dm")
     
-    lazy var chordsList = [em,e,am,a,c,g,d,dm,f]
+    lazy var chordsList = [dm,e,am,a,c,g,d,dm,f]
     
     
     func printDM (){

@@ -13,14 +13,23 @@ import AudioKit
 var elapsedTime = 0.0
 var score = 0.0
 var chordBeingPlayed = "Nothing yet"
-var correctStrings = [false, false, false, false, false, false]
+var correctStrings: [Bool] = []
+let Cplay = ["x", " ", " ", "o", " ", "o"]
+let Gplay = [" ", " ", "o", "o", "o", " "]
+let Aplay = ["x", "o", " ", " ", " ", "o"]
+let Dplay = ["x", "x", "o", " ", " ", " "]
+let Eplay = ["o", " ", " ", " ", "o", "o"]
+let Fplay = [" ", " ", " ", " ", " ", " "]
+let Amplay = ["x", "o", " ", " ", " ", "o"]
+let Dmplay = ["x", "x", "o", " ", " ", " "]
+let Emplay = ["o", " ", " ", "o", "o", "o"]
+let x_0_strings = [Emplay, Eplay, Amplay, Aplay, Cplay, Gplay, Dplay, Dmplay, Fplay,]
 
 class ViewController2: UIViewController, TunerDelegate{
     func compareChord(recordedChord: [Double]) {
         difference = 0
         score = 0
-        correctStrings = [false, false, false, false, false, false]
-        //let originalChord = [82.4, 130.8, 155.56, 196.00, 261.94, 329.63]
+        correctStrings = []
         end = DispatchTime.now()
         let scaleTime = 1000000000.0
         elapsedTime = Double(Double(end.uptimeNanoseconds)/scaleTime - Double(start.uptimeNanoseconds)/scaleTime)
@@ -35,11 +44,10 @@ class ViewController2: UIViewController, TunerDelegate{
             difference += new_difference
             if new_difference > 5{
                 score += 10*difference
-                correctStrings[i] = false
-                print("false: \(correctStrings)")
+                correctStrings.append(false)
+                //correctStrings[i] = false
             }else{
-                correctStrings[i] = true
-                print("correct: \(correctStrings)")
+                correctStrings.append(true)
             }
         }
         score = 1 - (score/1700)
@@ -73,6 +81,14 @@ class ViewController2: UIViewController, TunerDelegate{
     
     @IBOutlet weak var continueButton: UIButton!
     
+    
+    @IBOutlet weak var Eplay: UITextField!
+    @IBOutlet weak var Aplay: UITextField!
+    @IBOutlet weak var Dplay: UITextField!
+    @IBOutlet weak var Gplay: UITextField!
+    @IBOutlet weak var Bplay: UITextField!
+    @IBOutlet weak var Esplay: UITextField!
+    
     var start = DispatchTime.now()
     var end = DispatchTime.now()
     @IBOutlet weak var chordName: UITextField!
@@ -81,7 +97,7 @@ class ViewController2: UIViewController, TunerDelegate{
         super.viewDidLoad()
         //feedbackButton.isHidden = true
         start = DispatchTime.now()
-        continueButton.isHidden = true
+        continueButton.isHidden = false
         userInterface = UserInterface(frame: CGRect(x: 53, y: 190, width: 269, height: 400))
         userInterface.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.6)
         view.addSubview(userInterface)
@@ -92,12 +108,42 @@ class ViewController2: UIViewController, TunerDelegate{
                                      repeats: false)
     }
     
+    
+    func singleOX(digit: String) -> String{
+        let textLayer = CATextLayer()
+        textLayer.string = digit
+        textLayer.foregroundColor = UIColor.white.cgColor
+        textLayer.font = UIFont(name: "Avenir", size: 20.0)
+        textLayer.fontSize = 20.0
+        textLayer.contentsScale = UIScreen.main.scale
+        return digit
+    }
+    
+    func OX(E: String, A: String, D: String, G: String, B: String, es: String) {
+        Eplay.text = singleOX(digit: E)
+        Aplay.text = singleOX(digit: A)
+        Dplay.text = singleOX(digit: D)
+        Gplay.text = singleOX(digit: G)
+        Bplay.text = singleOX(digit: B)
+        Esplay.text = singleOX(digit: es)
+    }
+    
     @objc func startRoutine() {
         tuner.delegate = self
         chordName.text = StartCogMod()
         chordBeingPlayed = chordName.text!
         userInterface.setNeedsDisplay()
         tuner.startRecordingChord()
+        let chordNamesDataset = ["Em","E","Am","A","C","G","D","Dm","F"]
+        var index = 0
+        for chord in chordNamesDataset{
+            if chord == chordBeingPlayed{
+                index = chordNamesDataset.firstIndex(of: chord)!
+            }
+        }
+        
+        let string = x_0_strings[index]
+        OX(E: string[0], A: string[1], D: string[2], G: string[3], B: string[4], es: string[5])
     }
     
     func StartCogMod() -> String {
