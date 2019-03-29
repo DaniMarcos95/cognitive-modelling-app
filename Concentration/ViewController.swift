@@ -16,17 +16,17 @@ class ViewController: UIViewController, TunerDelegate {
         for i in 0...recordedChord.count-1 {
             difference += abs(recordedChord[i] - originalChord[i])
         }
-        print(difference)
+        //print(difference)
     }
     
     func changeStringColor(stringIndex: Int){
         if(stringIndex < 5){
             stringColors[stringIndex] = "Green"
             stringColors[stringIndex+1] = "Blue"
-            print(stringColors)
+            //print(stringColors)
         }else{
             stringColors[stringIndex] = "Green"
-            print(stringColors)
+            //print(stringColors)
         }
     }
     

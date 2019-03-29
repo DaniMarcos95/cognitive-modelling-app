@@ -2,18 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/s3734277/Desktop/cognitive-modelling-app/Concentration/ViewControllerUser.swift">
-   </FileRef>
-   <FileRef
-      location = "group:/Users/s3734277/Desktop/cognitive-modelling-app/Concentration/cogmodel.swift">
-   </FileRef>
-   <FileRef
-      location = "group:/Users/s3734277/Desktop/cognitive-modelling-app/Concentration/time_track.swift">
-   </FileRef>
-   <FileRef
-      location = "group:ACTR">
-   </FileRef>
-   <FileRef
       location = "group:Concentration.xcodeproj">
    </FileRef>
    <FileRef

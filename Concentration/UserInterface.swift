@@ -333,7 +333,7 @@ class UserInterface: UIView {
                     correctStrings.insert(true, at: i)
                 }
             }
-            print(" Strings: \(correctStrings)")
+            //print(" Strings: \(correctStrings)")
             let aux = correctStrings[0]
             correctStrings[0] = correctStrings[1]
             correctStrings[1] = aux

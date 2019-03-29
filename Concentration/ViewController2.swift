@@ -34,8 +34,8 @@ class ViewController2: UIViewController, TunerDelegate{
         let scaleTime = 1000000000.0
         elapsedTime = Double(Double(end.uptimeNanoseconds)/scaleTime - Double(start.uptimeNanoseconds)/scaleTime)
         
-        print("Total time: \(elapsedTime)")
-        print("Recorded chord: \(recordedChord)")
+        //print("Total time: \(elapsedTime)")
+        //print("Recorded chord: \(recordedChord)")
         if elapsedTime > 10{
             score += 30*(elapsedTime-10)
         }
