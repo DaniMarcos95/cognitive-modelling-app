@@ -8,6 +8,7 @@
 import UIKit
 
 var numOfRecords = 0
+let chordNamesDataset = ["Em","E","Am","A","C","G","D","Dm","F"]
 
 class UserInterface: UIView {
 
@@ -223,7 +224,6 @@ class UserInterface: UIView {
         let stringOrder = [recordE, recordA, recordD, recordG, recordB, recorde, allrecorded]
         
         var index = 0
-        let chordNamesDataset = ["Em","E","Am","A","C","G","D","Dm","F"]
         for chord in chordNamesDataset{
             if chord == chordToPresent{
                 index = chordNamesDataset.firstIndex(of: chord)!
@@ -333,7 +333,6 @@ class UserInterface: UIView {
                     correctStrings.insert(true, at: i)
                 }
             }
-            //print(" Strings: \(correctStrings)")
             let aux = correctStrings[0]
             correctStrings[0] = correctStrings[1]
             correctStrings[1] = aux

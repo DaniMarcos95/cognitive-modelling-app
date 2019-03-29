@@ -1,8 +1,8 @@
 //
-//  ViewController2.swift
+//  CompetingController.swift
 //  Concentration
 //
-//  Created by D. Marcos Mazon on 22/03/2019.
+//  Created by D. Marcos Mazon on 3/29/19.
 //  Copyright © 2019 Daniel Marcos. All rights reserved.
 //
 
@@ -10,30 +10,15 @@ import Foundation
 import UIKit
 import AudioKit
 
-var elapsedTime = 0.0
-var score = 0.0
-var chordBeingPlayed = "Nothing yet"
-var correctStrings: [Bool] = []
-let Cplay = ["x", " ", " ", "o", " ", "o"]
-let Gplay = [" ", " ", "o", "o", "o", " "]
-let Aplay = ["x", "o", " ", " ", " ", "o"]
-let Dplay = ["x", "x", "o", " ", " ", " "]
-let Eplay = ["o", " ", " ", " ", "o", "o"]
-let Fplay = [" ", " ", " ", " ", " ", " "]
-let Amplay = ["x", "o", " ", " ", " ", "o"]
-let Dmplay = ["x", "x", "o", " ", " ", " "]
-let Emplay = ["o", " ", " ", "o", "o", "o"]
-let x_0_strings = [Emplay, Eplay, Amplay, Aplay, Cplay, Gplay, Dplay, Dmplay, Fplay,]
-
-class ViewController2: UIViewController, TunerDelegate{
+class CompetingController: UIViewController, TunerDelegate{
     func compareChord(recordedChord: [Double]) {
         difference = 0
         score = 0
         correctStrings = []
         end = DispatchTime.now()
         let scaleTime = 1000000000.0
-        elapsedTime = Double(Double(end.uptimeNanoseconds)/scaleTime - Double(start.uptimeNanoseconds)/scaleTime)
-        
+        elapsedTime = Double(Double(end.uptimeNanoseconds)/scaleTime - Double(start.uptimeNanoseconds)/scaleTime) - 2.5
+
         if elapsedTime > 10{
             score += 30*(elapsedTime-10)
         }
@@ -42,20 +27,20 @@ class ViewController2: UIViewController, TunerDelegate{
             difference += new_difference
             if new_difference > 5{
                 score += 10*difference
-                correctStrings.append(false)
-                //correctStrings[i] = false
-            }else{
-                correctStrings.append(true)
             }
         }
         score = 1 - (score/1700)
         if score < 0{
             score = 0.01
         }
-        testing().updateModel(accuracyScore: score)
-        continueButton.isHidden = false
+        
+        if playerIndex == 1{
+            player1.overallScore += score
+        }else{
+            player2.overallScore += score
+        }
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let nextViewController = storyboard.instantiateViewController(withIdentifier: "ViewController3") as! ViewController3
+        let nextViewController = storyboard.instantiateViewController(withIdentifier: "CompetingController") as! CompetingController
         self.present(nextViewController, animated: true, completion: nil)
         tuner.stopMonitoring()
     }
@@ -65,22 +50,35 @@ class ViewController2: UIViewController, TunerDelegate{
         userInterface.setNeedsDisplay()
     }
     
-  
-    
-    @IBAction func continuePressed(_ sender: Any) {
-        
-    }
     
     var userInterface: UserInterface!
     let index    = 2
     
     fileprivate var timer:      Timer?
+    fileprivate var infoPlayerTimer:      Timer?
     let tuner = Tuner()
     var difference = 0.0
-    var showchunk = Chunk(s: "please", m: cogmod)
     
+    @IBOutlet weak var infoPlayer: UITextField!
     @IBOutlet weak var continueButton: UIButton!
     
+    @IBAction func continueButton(_ sender: UIButton) {
+        gameIndex += 1
+        if playerIndex == 1{
+            playerIndex = 2
+        }else{
+            playerIndex = 1
+        }
+        if(gameIndex == 10){
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let nextViewController = storyboard.instantiateViewController(withIdentifier: "WinnerController") as! WinnerController
+            self.present(nextViewController, animated: true, completion: nil)
+        }else{
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let nextViewController = storyboard.instantiateViewController(withIdentifier: "CompetingController") as! CompetingController
+            self.present(nextViewController, animated: true, completion: nil)
+        }
+    }
     
     @IBOutlet weak var Eplay: UITextField!
     @IBOutlet weak var Aplay: UITextField!
@@ -93,25 +91,24 @@ class ViewController2: UIViewController, TunerDelegate{
     var end = DispatchTime.now()
     @IBOutlet weak var chordName: UITextField!
     
-    @IBAction func skipButton(_ sender: UIButton) {
-        score = 0.01
-        testing().updateModel(accuracyScore: score)
-        correctStrings = [false, false, false, false, false, false]
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let nextViewController = storyboard.instantiateViewController(withIdentifier: "ViewController3") as! ViewController3
-        self.present(nextViewController, animated: true, completion: nil)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        //feedbackButton.isHidden = true
+        if playerIndex == 1{
+            infoPlayer.text = "\(player1.name)'s turn"
+        }else{
+            infoPlayer.text = "\(player2.name)'s turn"
+        }
         start = DispatchTime.now()
-        continueButton.isHidden = false
         userInterface = UserInterface(frame: CGRect(x: 53, y: 190, width: 269, height: 400))
         userInterface.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.6)
         view.addSubview(userInterface)
+        chordName.isHidden = true
         
-        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self,
+        infoPlayerTimer = Timer.scheduledTimer(timeInterval: 2.5, target: self,
+                                     selector: #selector(hidePlayer),
+                                     userInfo: nil,
+                                     repeats: false)
+        timer = Timer.scheduledTimer(timeInterval: 2.5, target: self,
                                      selector: #selector(startRoutine),
                                      userInfo: nil,
                                      repeats: false)
@@ -137,28 +134,24 @@ class ViewController2: UIViewController, TunerDelegate{
         Esplay.text = singleOX(digit: es)
     }
     
+    @objc func hidePlayer() {
+        infoPlayer.isHidden = true
+        chordName.isHidden = false
+    }
+    
     @objc func startRoutine() {
         tuner.delegate = self
-        chordName.text = StartCogMod()
-        chordBeingPlayed = chordName.text!
+        chordBeingPlayed = setOfChords[gameIndex]
+        chordName.text = chordBeingPlayed
         userInterface.setNeedsDisplay()
         tuner.startRecordingChord()
-        let chordNamesDataset = ["Em","E","Am","A","C","G","D","Dm","F"]
         var index = 0
         for chord in chordNamesDataset{
             if chord == chordBeingPlayed{
                 index = chordNamesDataset.firstIndex(of: chord)!
             }
         }
-        
         let string = x_0_strings[index]
         OX(E: string[0], A: string[1], D: string[2], G: string[3], B: string[4], es: string[5])
     }
-    
-    func StartCogMod() -> String {
-        showchunk = testing().nextORnew()!
-        userInterface.chordToPresent = showchunk.name
-        return showchunk.name
-    }
-
 }

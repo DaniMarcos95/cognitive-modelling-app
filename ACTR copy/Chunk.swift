@@ -118,15 +118,14 @@ Set the baselevel of a chunk
             let y = model.dm.baseLevelDecay! + log(model.time - creationTime!)
             return x - y
         } else {
-            print(self.listBeta)
-            print(self.referenceList)
+            //print(self.listBeta)
+            //print(self.referenceList)
             var sum = 0.0
             for i in 0..<referenceList.endIndex {
-                var temp =  pow((self.model.time - referenceList[i]), -self.model.dm.baseLevelDecay!)
+                var temp =  pow((self.model.time - self.referenceList[i]), -self.model.dm.baseLevelDecay!)
                 sum += (temp*self.listBeta[i])
-                
-                var answer = log(sum)
                 //print ("my calculation is; \(answer)")
+                
 
             }
             /*
@@ -134,6 +133,7 @@ Set the baselevel of a chunk
         
             print("niels calucated: \(testingorginal)")
             */
+            var answer = log(sum)
             return answer
         }
     }

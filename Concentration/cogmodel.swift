@@ -177,19 +177,19 @@ class testing {
     
     func addnewchord (chordsList: [Chunk]) -> Chunk{
         let i = indexcount
-        print("we will add chord with index \(i)")
+        //print("we will add chord with index \(i)")
         let something = cogmod.dm.addToDMOrStrengthen(chunk: chordsList[i])
         chordsList[i].setSlot(slot: "type", value: "Chord")
         chordsList[i].setSlot(slot: "ChordType", value: chordsList[i].name)
         indexcount += 1
         
         UserDefaults.standard.set(indexcount, forKey: self.user_storedChords)
-        print("user defaults for index set to \(self.user_storedChords)")
+        //print("user defaults for index set to \(self.user_storedChords)")
         //self.shownchunk = chordsList[i]
         
         
         var temp = timer.stop()
-        print("when adding chord time is \(cogmod.time)")
+        //print("when adding chord time is \(cogmod.time)")
         chordsList[i].listBeta.append(0.1)
         return chordsList[i]
     }
@@ -223,16 +223,17 @@ class testing {
     //call this func before they want to play chord (to choose what comes next): "
     func retrieveNext ()  -> Chunk? {
         var temp = timer.stop()
-        print("time is \(temp)")
+        //print("time is \(temp)")
         cogmod.time += temp
         let probechunk = cogmod.generateNewChunk(string: "toretrieve")
         probechunk.setSlot(slot: "type", value: "Chord")
         let (latency, retrieveResult) = cogmod.dm.retrieve(chunk: probechunk)
+        print("when retrtieving model time is /(model.time)")
         printDM()
         
 
-        print("We retrieved:")
-        print (retrieveResult)
+        //print("We retrieved:")
+        //print (retrieveResult)
         if retrieveResult != nil{
         shownchunk.append(retrieveResult!)
         }
@@ -248,6 +249,11 @@ class testing {
 // call this after they have played a chord
 
     func updateModel ( accuracyScore: Double){
+        
+        //WE ADJUST THE ACCURACY SCORE BECAUSE ACTIVATION DOESNT CLIMB
+        let new_acc_score = accuracyScore*1.5
+        
+        
         //print(indexcount)
         var i = shownchunk.endIndex
         var temp = timer.stop()
@@ -264,8 +270,8 @@ class testing {
             shownchunk[i].beta = 0.3
         }
  */
-        shownchunk[i].listBeta.append(accuracyScore)
-        shownchunk[i].beta = accuracyScore
+        shownchunk[i].listBeta.append(new_acc_score)
+        shownchunk[i].beta = new_acc_score
         
         let user_betalist_chord = self.user_betalist + shownchunk[i].name
         UserDefaults.standard.set(shownchunk[i].listBeta, forKey: user_betalist_chord)
@@ -281,6 +287,7 @@ class testing {
 
         UserDefaults.standard.set(shownchunk[i].referenceList, forKey: user_references_chord)
         UserDefaults.standard.set(cogmod.time, forKey: user_time)
+        
         
         print("FINISHED UPDATING")
       

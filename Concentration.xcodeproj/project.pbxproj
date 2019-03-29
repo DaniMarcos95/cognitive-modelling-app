@@ -16,6 +16,10 @@
 		06EE046E22295FB6007C2332 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EE046B22295FB5007C2332 /* Note.swift */; };
 		06EE046F22295FB6007C2332 /* Tuner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EE046C22295FB5007C2332 /* Tuner.swift */; };
 		2C5DC86F8FE907A3B2EDD706 /* Pods_Concentration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CF7BD999AFA5C911B9F54F9 /* Pods_Concentration.framework */; };
+		7100BF23224E74D1009EC50B /* CompetitionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7100BF22224E74D1009EC50B /* CompetitionController.swift */; };
+		7100BF25224E7507009EC50B /* Competitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7100BF24224E7507009EC50B /* Competitor.swift */; };
+		7100BF27224E7B1B009EC50B /* CompetingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7100BF26224E7B1B009EC50B /* CompetingController.swift */; };
+		7100BF29224E8391009EC50B /* WinnerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7100BF28224E8391009EC50B /* WinnerController.swift */; };
 		716988C9224BC1F2008594F2 /* time_track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716988C7224BC1F2008594F2 /* time_track.swift */; };
 		717B251A224A73C200BFF45C /* ViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717B2519224A73C200BFF45C /* ViewController3.swift */; };
 		717EE730223FA7A9003862C8 /* UserInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717EE72F223FA7A9003862C8 /* UserInterface.swift */; };
@@ -55,6 +59,10 @@
 		06EE046C22295FB5007C2332 /* Tuner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tuner.swift; sourceTree = "<group>"; };
 		081FDFDF5889ACE9A13EDE42 /* Pods-Concentration.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Concentration.release.xcconfig"; path = "Target Support Files/Pods-Concentration/Pods-Concentration.release.xcconfig"; sourceTree = "<group>"; };
 		6CF7BD999AFA5C911B9F54F9 /* Pods_Concentration.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Concentration.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7100BF22224E74D1009EC50B /* CompetitionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionController.swift; sourceTree = "<group>"; };
+		7100BF24224E7507009EC50B /* Competitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Competitor.swift; sourceTree = "<group>"; };
+		7100BF26224E7B1B009EC50B /* CompetingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetingController.swift; sourceTree = "<group>"; };
+		7100BF28224E8391009EC50B /* WinnerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinnerController.swift; sourceTree = "<group>"; };
 		716988C7224BC1F2008594F2 /* time_track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = time_track.swift; path = "/Users/s3734277/Desktop/cognitive-modelling-app/Concentration/time_track.swift"; sourceTree = "<absolute>"; };
 		717B2519224A73C200BFF45C /* ViewController3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController3.swift; sourceTree = "<group>"; };
 		717EE72F223FA7A9003862C8 /* UserInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserInterface.swift; path = "/Users/s3734277/Desktop/cognitive-modelling-app/Concentration/UserInterface.swift"; sourceTree = "<absolute>"; };
@@ -119,6 +127,7 @@
 				71959E61224E615D008A96DA /* ViewControllerUser.swift */,
 				71959E38224E5F7E008A96DA /* CheckUsers.swift */,
 				716988C7224BC1F2008594F2 /* time_track.swift */,
+				7100BF28224E8391009EC50B /* WinnerController.swift */,
 				71959E63224E7350008A96DA /* cogmodel.swift */,
 				717EE72F223FA7A9003862C8 /* UserInterface.swift */,
 				06EE046B22295FB5007C2332 /* Note.swift */,
@@ -128,6 +137,9 @@
 				065BCD6822099D340072A656 /* AppDelegate.swift */,
 				065BCD6A22099D340072A656 /* ViewController.swift */,
 				065BCD6C22099D340072A656 /* Main.storyboard */,
+				7100BF26224E7B1B009EC50B /* CompetingController.swift */,
+				7100BF22224E74D1009EC50B /* CompetitionController.swift */,
+				7100BF24224E7507009EC50B /* Competitor.swift */,
 				719FCB692244E643002F72F2 /* ViewController2.swift */,
 				065BCD6F22099D340072A656 /* Assets.xcassets */,
 				065BCD7122099D340072A656 /* LaunchScreen.storyboard */,
@@ -310,14 +322,18 @@
 				717B251A224A73C200BFF45C /* ViewController3.swift in Sources */,
 				71959E56224E603D008A96DA /* Instantiation.swift in Sources */,
 				71959E39224E5F7E008A96DA /* CheckUsers.swift in Sources */,
+				7100BF29224E8391009EC50B /* WinnerController.swift in Sources */,
 				71959E57224E603D008A96DA /* Model.swift in Sources */,
 				71959E5A224E603D008A96DA /* Production.swift in Sources */,
 				06EE046E22295FB6007C2332 /* Note.swift in Sources */,
 				71959E51224E603D008A96DA /* BufferAction.swift in Sources */,
 				71959E60224E603D008A96DA /* Vision.swift in Sources */,
 				71959E54224E603D008A96DA /* Declarative.swift in Sources */,
+				7100BF25224E7507009EC50B /* Competitor.swift in Sources */,
 				71959E53224E603D008A96DA /* Chunk.swift in Sources */,
+				7100BF23224E74D1009EC50B /* CompetitionController.swift in Sources */,
 				71959E58224E603D008A96DA /* Parser.swift in Sources */,
+				7100BF27224E7B1B009EC50B /* CompetingController.swift in Sources */,
 				71959E62224E615D008A96DA /* ViewControllerUser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
