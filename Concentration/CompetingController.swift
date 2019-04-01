@@ -39,10 +39,25 @@ class CompetingController: UIViewController, TunerDelegate{
         }else{
             player2.overallScore += score
         }
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let nextViewController = storyboard.instantiateViewController(withIdentifier: "CompetingController") as! CompetingController
-        self.present(nextViewController, animated: true, completion: nil)
-        tuner.stopMonitoring()
+        
+        gameIndex += 1
+        if playerIndex == 1{
+            playerIndex = 2
+        }else{
+            playerIndex = 1
+        }
+        if(gameIndex == 10){
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let nextViewController = storyboard.instantiateViewController(withIdentifier: "WinnerController") as! WinnerController
+            self.present(nextViewController, animated: true, completion: nil)
+            tuner.stopMonitoring()
+        }else{
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let nextViewController = storyboard.instantiateViewController(withIdentifier: "CompetingController") as! CompetingController
+            self.present(nextViewController, animated: true, completion: nil)
+            tuner.stopMonitoring()
+        }
+        
     }
     
     func changeStringColor(stringIndex: Int) {
@@ -73,10 +88,12 @@ class CompetingController: UIViewController, TunerDelegate{
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let nextViewController = storyboard.instantiateViewController(withIdentifier: "WinnerController") as! WinnerController
             self.present(nextViewController, animated: true, completion: nil)
+            tuner.stopMonitoring()
         }else{
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let nextViewController = storyboard.instantiateViewController(withIdentifier: "CompetingController") as! CompetingController
             self.present(nextViewController, animated: true, completion: nil)
+            tuner.stopMonitoring()
         }
     }
     
