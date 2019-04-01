@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pBf-k6-NCs">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mQr-ea-b3B">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -174,10 +174,31 @@
             </objects>
             <point key="canvasLocation" x="101.59999999999999" y="898.2008995502249"/>
         </scene>
+        <!--Initial Controller-->
+        <scene sceneID="3sw-wt-sYs">
+            <objects>
+                <viewController id="mQr-ea-b3B" customClass="InitialController" customModule="Concentration" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xVk-f0-Sbg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="guitar_app_logo" translatesAutoresizingMaskIntoConstraints="NO" id="aFo-Bl-Zea">
+                                <rect key="frame" x="67" y="198" width="240" height="271"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Joq-xu-VNR"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jwV-j5-pDW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1442.4000000000001" y="120.98950524737631"/>
+        </scene>
         <!--View Controller User-->
         <scene sceneID="Ewn-mF-ycb">
             <objects>
-                <viewController id="pBf-k6-NCs" customClass="ViewControllerUser" customModule="Concentration" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewControllerUser" id="pBf-k6-NCs" customClass="ViewControllerUser" customModule="Concentration" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cqD-tS-My9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -924,7 +945,7 @@
         <image name="slider-wood" width="800" height="1500"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="3w3-NH-W3d"/>
+        <segue reference="WWQ-tS-hBg"/>
         <segue reference="3XX-SG-Qab"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -85,7 +85,7 @@ class testing {
             chordsList[i].setSlot(slot: "type", value: "Chord")
             chordsList[i].setSlot(slot: "ChordType", value: chordsList[i].name)
             
-            var temp = timer.stop()
+            let temp = timer.stop()
             print("time is \(temp)")
             
             let user_references_chord = user_references + chordsList[i].name
@@ -146,7 +146,7 @@ class testing {
             let something = cogmod.dm.addToDMOrStrengthen(chunk: chordsList[i])
             chordsList[i].setSlot(slot: "type", value: "Chord")
             chordsList[i].setSlot(slot: "ChordType", value: chordsList[i].name)
-            var temp = timer.stop()
+            let temp = timer.stop()
             print("time is \(temp)")
             indexcount = i
             
@@ -155,7 +155,7 @@ class testing {
     //NOTUSED
     func startapp () -> Chunk?{
         Firstaddnewchord(chordsList: chordsList)
-        var temp = timer.stop()
+        let temp = timer.stop()
         print("time is \(temp)")
         cogmod.time = temp
         cogmod.time += 50
@@ -222,7 +222,7 @@ class testing {
     
     //call this func before they want to play chord (to choose what comes next): "
     func retrieveNext ()  -> Chunk? {
-        var temp = timer.stop()
+        let temp = timer.stop()
         //print("time is \(temp)")
         cogmod.time += temp
         let probechunk = cogmod.generateNewChunk(string: "toretrieve")

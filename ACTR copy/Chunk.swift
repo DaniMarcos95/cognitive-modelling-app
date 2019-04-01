@@ -122,7 +122,7 @@ Set the baselevel of a chunk
             //print(self.referenceList)
             var sum = 0.0
             for i in 0..<referenceList.endIndex {
-                var temp =  pow((self.model.time - self.referenceList[i]), -self.model.dm.baseLevelDecay!)
+                let temp =  pow((self.model.time - self.referenceList[i]), -self.model.dm.baseLevelDecay!)
                 sum += (temp*self.listBeta[i])
                 //print ("my calculation is; \(answer)")
                 
@@ -133,7 +133,7 @@ Set the baselevel of a chunk
         
             print("niels calucated: \(testingorginal)")
             */
-            var answer = log(sum)
+            let answer = log(sum)
             return answer
         }
     }

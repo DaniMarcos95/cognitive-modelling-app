@@ -19,6 +19,8 @@
 		7100BF27224E7B1B009EC50B /* CompetingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7100BF26224E7B1B009EC50B /* CompetingController.swift */; };
 		7100BF29224E8391009EC50B /* WinnerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7100BF28224E8391009EC50B /* WinnerController.swift */; };
 		711FA55C225265F7002A08D8 /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711FA55B225265F7002A08D8 /* TutorialView.swift */; };
+		711FA55E22527022002A08D8 /* InitialController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711FA55D22527022002A08D8 /* InitialController.swift */; };
+		711FA56222527741002A08D8 /* intro_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 711FA56122527741002A08D8 /* intro_sound.mp3 */; };
 		716988C9224BC1F2008594F2 /* time_track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716988C7224BC1F2008594F2 /* time_track.swift */; };
 		717B251A224A73C200BFF45C /* ViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717B2519224A73C200BFF45C /* ViewController3.swift */; };
 		717EE730223FA7A9003862C8 /* UserInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717EE72F223FA7A9003862C8 /* UserInterface.swift */; };
@@ -61,6 +63,8 @@
 		7100BF26224E7B1B009EC50B /* CompetingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetingController.swift; sourceTree = "<group>"; };
 		7100BF28224E8391009EC50B /* WinnerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinnerController.swift; sourceTree = "<group>"; };
 		711FA55B225265F7002A08D8 /* TutorialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
+		711FA55D22527022002A08D8 /* InitialController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialController.swift; sourceTree = "<group>"; };
+		711FA56122527741002A08D8 /* intro_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = intro_sound.mp3; sourceTree = "<group>"; };
 		716988C7224BC1F2008594F2 /* time_track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = time_track.swift; path = "/Users/s3734277/Desktop/cognitive-modelling-app/Concentration/time_track.swift"; sourceTree = "<absolute>"; };
 		717B2519224A73C200BFF45C /* ViewController3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController3.swift; sourceTree = "<group>"; };
 		717EE72F223FA7A9003862C8 /* UserInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserInterface.swift; path = "/Users/s3734277/Desktop/cognitive-modelling-app/Concentration/UserInterface.swift"; sourceTree = "<absolute>"; };
@@ -133,7 +137,9 @@
 				06EE046C22295FB5007C2332 /* Tuner.swift */,
 				065BCD6822099D340072A656 /* AppDelegate.swift */,
 				065BCD6A22099D340072A656 /* ViewController.swift */,
+				711FA56122527741002A08D8 /* intro_sound.mp3 */,
 				065BCD6C22099D340072A656 /* Main.storyboard */,
+				711FA55D22527022002A08D8 /* InitialController.swift */,
 				7100BF26224E7B1B009EC50B /* CompetingController.swift */,
 				7100BF22224E74D1009EC50B /* CompetitionController.swift */,
 				7100BF24224E7507009EC50B /* Competitor.swift */,
@@ -250,6 +256,7 @@
 				065BCD7322099D340072A656 /* LaunchScreen.storyboard in Resources */,
 				065BCD7022099D340072A656 /* Assets.xcassets in Resources */,
 				065BCD6E22099D340072A656 /* Main.storyboard in Resources */,
+				711FA56222527741002A08D8 /* intro_sound.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,6 +313,7 @@
 				065BCD6922099D340072A656 /* AppDelegate.swift in Sources */,
 				71959E52224E603D008A96DA /* BufferCondition.swift in Sources */,
 				06EE046F22295FB6007C2332 /* Tuner.swift in Sources */,
+				711FA55E22527022002A08D8 /* InitialController.swift in Sources */,
 				71959E5D224E603D008A96DA /* Support.swift in Sources */,
 				71959E50224E603D008A96DA /* ACTRWindowView.swift in Sources */,
 				71959E59224E603D008A96DA /* Procedural.swift in Sources */,
