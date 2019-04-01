@@ -21,7 +21,6 @@ class ViewControllerUser: UIViewController {
     
     
     @IBAction func signInButton(_ sender: UIButton) {
-        print(UsernameRegister.text)
         let AString: String = UsernameRegister.text!
         ModelComm().takeInput(TheInput: AString)
     }

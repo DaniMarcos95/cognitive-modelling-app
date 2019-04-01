@@ -43,7 +43,6 @@ class ViewController2: UIViewController, TunerDelegate{
             if new_difference > 5{
                 score += 10*difference
                 correctStrings.append(false)
-                //correctStrings[i] = false
             }else{
                 correctStrings.append(true)
             }
@@ -104,7 +103,6 @@ class ViewController2: UIViewController, TunerDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //feedbackButton.isHidden = true
         start = DispatchTime.now()
         continueButton.isHidden = false
         userInterface = UserInterface(frame: CGRect(x: 53, y: 190, width: 269, height: 400))

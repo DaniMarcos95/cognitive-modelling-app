@@ -43,8 +43,6 @@ class Tuner: NSObject {
     fileprivate let analyzer:   AKAudioAnalyzer
     let amp_threshold_high = 0.08
     let amp_threshold_low = 0.05
-    //let amp_threshold_high = 0.0
-    //let amp_threshold_low = 0.0
     var recordedChord = [Double]()
     var count = 0
 

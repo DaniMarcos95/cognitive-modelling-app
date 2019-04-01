@@ -135,7 +135,7 @@ class UserInterface: UIView {
     }
     
     func drawGreenFeedback(n: Int) {
-        var feedback_green_string = UIBezierPath()
+        let feedback_green_string = UIBezierPath()
         feedback_green_string.move(to: CGPoint(x: n, y:0))
         feedback_green_string.addLine(to: CGPoint(x: n, y: Int(bounds.height)))
         UIColor.green.setStroke()
@@ -144,7 +144,7 @@ class UserInterface: UIView {
     }
     
     func drawRedFeedback(n: Int) {
-        var feedback_red_string = UIBezierPath()
+        let feedback_red_string = UIBezierPath()
         feedback_red_string.move(to: CGPoint(x: n, y:0))
         feedback_red_string.addLine(to: CGPoint(x: n, y: Int(bounds.height)))
         UIColor.red.setStroke()
@@ -153,7 +153,7 @@ class UserInterface: UIView {
     }
     
     func drawGrayString(n: Int) {
-        var feedback_gray_string = UIBezierPath()
+        let feedback_gray_string = UIBezierPath()
         feedback_gray_string.move(to: CGPoint(x: n, y:0))
         feedback_gray_string.addLine(to: CGPoint(x: n, y: Int(bounds.height)))
         UIColor.lightGray.setStroke()
@@ -183,7 +183,7 @@ class UserInterface: UIView {
     }
     
     func Fingers(digit: String, string: Int, fret: Int) {
-        var finger = UIBezierPath()
+        let finger = UIBezierPath()
         finger.addArc(
             withCenter: CGPoint(x: string, y: fret),
             radius: 13,
@@ -239,7 +239,6 @@ class UserInterface: UIView {
         let Am = [[2, sD, p2], [3, sG, p2], [1, sB, p1]]
         let Dm = [[2, sG, p2], [3, sB, p3], [1, se, p1]]
         let Em = [[2, sA, p2], [3, sD, p2]]
-        let A7 = [[1, sD, p2], [2, sB, p2]]
         
         let frequenciesC = [ 130.8, 155.56, 196.00, 261.94, 329.63]
         let frequenciesA = [110.0, 164.8, 220.0, 277.2, 329.6]
@@ -275,16 +274,6 @@ class UserInterface: UIView {
         Strings()
         Marks()
         Bline()
-        /*
-         let upstrings = [sE, sA, sD, sG, sB, se]
-         for current_string in upstrings {
-         update(n: Int(current_string))
-         }
-         update(n: Int(sD))
-         Finished(n: Int(sE))
-         Finished(n: Int(sA))
-         
-         */
         
         retrieveActivation()
         
@@ -300,7 +289,7 @@ class UserInterface: UIView {
         
         numOfRecords = numberOfStrings[index]
         
-        var aux = stringColorDataset[index]
+        let aux = stringColorDataset[index]
         var count = 0
         for element in aux{
             if element == false{
