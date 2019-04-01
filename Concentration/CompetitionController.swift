@@ -28,6 +28,7 @@ class CompetitionController: UIViewController {
     @IBAction func startCompetition(_ sender: UIButton) {
         player1.name = player1Name.text!
         player2.name = player2Name.text!
+        gameIndex = 0
         let sequence = 0 ..< 9
         let shuffledSequence = sequence.shuffled()
         for index in shuffledSequence{

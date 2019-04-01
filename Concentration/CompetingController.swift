@@ -141,8 +141,11 @@ class CompetingController: UIViewController, TunerDelegate{
     
     @objc func startRoutine() {
         tuner.delegate = self
-        chordBeingPlayed = setOfChords[gameIndex]
+        if gameIndex < 10{
+            chordBeingPlayed = setOfChords[gameIndex]
+        }
         chordName.text = chordBeingPlayed
+        userInterface.chordToPresent = chordBeingPlayed
         userInterface.setNeedsDisplay()
         tuner.startRecordingChord()
         var index = 0
