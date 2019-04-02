@@ -39,7 +39,8 @@ class ViewController3: UIViewController{
         userInterface.showFeedback = true
         view.addSubview(userInterface)
         timeText.text = "Time: \(round(10*elapsedTime)/10) seconds"
-        accuracyText.text = "Score: \(score)/1.0"
+        accuracyText.text = "Score: \(round(100*displayScore)/100)/1.0"
+        feedbackText.text = feedbackmessage
         let chordNamesDataset = ["Em","E","Am","A","C","G","D","Dm","F"]
         var index = 0
         for chord in chordNamesDataset{

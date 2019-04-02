@@ -311,9 +311,12 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.67000000000000004" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="Settings">
+                                <state key="normal" title="Change User">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <segue destination="pBf-k6-NCs" kind="show" id="c2b-Yz-eOy"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="guitar_app_logo" translatesAutoresizingMaskIntoConstraints="NO" id="5om-DH-IC5">
                                 <rect key="frame" x="117" y="42" width="140" height="140"/>
@@ -942,7 +945,7 @@
         <image name="Feedback" width="750" height="1334"/>
         <image name="Testing" width="750" height="1334"/>
         <image name="guitar_app_logo" width="525" height="511"/>
-        <image name="slider-wood" width="800" height="1500"/>
+        <image name="slider-wood" width="192" height="360"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="WWQ-tS-hBg"/>

@@ -10,6 +10,7 @@ import UIKit
 var numOfRecords = 0
 let chordNamesDataset = ["Em","E","Am","A","C","G","D","Dm","F"]
 
+
 class UserInterface: UIView {
 
     //Positions
@@ -28,9 +29,10 @@ class UserInterface: UIView {
     lazy var p5 = bounds.height * 9/10
     
     var indexToDraw: Int = 0
-    
     var displayOption = true
     var showFeedback = false
+    var activationLevel = 0.0
+    
     
     var chordToPresent: String = "initializing"
     var chordToCompare: [Double] = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
@@ -38,7 +40,6 @@ class UserInterface: UIView {
     
     
     var chunkList: [(String,Double,[Double])] = []
-    var activationLevel = 0.0
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -231,7 +232,7 @@ class UserInterface: UIView {
         }
         
         let C = [[3, sA, p3], [2, sD, p2], [1, sB, p1]]
-        let G = [[2, sE, p3], [1, sA, p2], [3, se, p3]]
+        let G = [[2, sE, p3], [1, sA, p2], [4, se, p3], [3, sB, p3]]
         let A = [[1, sD, p2], [2, sG, p2], [3, sB, p2]]
         let D = [[1, sG, p2], [3, sB, p3], [2, se, p2]]
         let E = [[2, sA, p2], [3, sD, p2], [1, sG, p1]]

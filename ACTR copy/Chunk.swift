@@ -107,7 +107,6 @@ Set the baselevel of a chunk
     - returns: The activation
     */
     func baseLevelActivation () -> Double {
-        var answer = 0.0
         if creationTime == nil { return 0 }
         if fixedActivation != nil {
             return fixedActivation!

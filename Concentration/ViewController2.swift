@@ -10,12 +10,13 @@ import Foundation
 import UIKit
 import AudioKit
 
+var feedbackmessage = " "
 var elapsedTime = 0.0
 var score = 0.0
 var chordBeingPlayed = "Nothing yet"
 var correctStrings: [Bool] = []
 let Cplay = ["x", " ", " ", "o", " ", "o"]
-let Gplay = [" ", " ", "o", "o", "o", " "]
+let Gplay = [" ", " ", "o", "o", " ", " "]
 let Aplay = ["x", "o", " ", " ", " ", "o"]
 let Dplay = ["x", "x", "o", " ", " ", " "]
 let Eplay = ["o", " ", " ", " ", "o", "o"]
@@ -24,11 +25,13 @@ let Amplay = ["x", "o", " ", " ", " ", "o"]
 let Dmplay = ["x", "x", "o", " ", " ", " "]
 let Emplay = ["o", " ", " ", "o", "o", "o"]
 let x_0_strings = [Emplay, Eplay, Amplay, Aplay, Cplay, Gplay, Dplay, Dmplay, Fplay,]
+var displayScore = 0.0
 
 class ViewController2: UIViewController, TunerDelegate{
     func compareChord(recordedChord: [Double]) {
         difference = 0
         score = 0
+        displayScore = 0
         correctStrings = []
         end = DispatchTime.now()
         let scaleTime = 1000000000.0
@@ -37,26 +40,49 @@ class ViewController2: UIViewController, TunerDelegate{
         if elapsedTime > 10{
             score += 30*(elapsedTime-10)
         }
+        
         for i in 0...recordedChord.count-1 {
             let new_difference = abs(recordedChord[i] - userInterface.chordToCompare[i])
             difference += new_difference
-            if new_difference > 5{
+            if new_difference > 3{
                 score += 10*difference
                 correctStrings.append(false)
             }else{
                 correctStrings.append(true)
             }
         }
+        
+        let numStringsPlayed = correctStrings.count
+        
+        for item in correctStrings{
+            if item == true {
+                displayScore += 1.0/Double(numStringsPlayed)
+            }
+        }
+                
+        if displayScore > 0.99  && elapsedTime < 12.0{
+            feedbackmessage = "Perfect! Well Done!"
+        }else if displayScore > 0.99  && elapsedTime >= 12.0{
+            print("Entering")
+            feedbackmessage = "Well Done! Now faster."
+        } else if displayScore <= 0.5{
+            feedbackmessage = "WRONG, Try Again"
+        }else{
+            feedbackmessage = "Almost there"
+        }
+
+        
         score = 1 - (score/1700)
         if score < 0{
             score = 0.01
         }
+        
         testing().updateModel(accuracyScore: score)
         continueButton.isHidden = false
+        tuner.stopMonitoring()
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let nextViewController = storyboard.instantiateViewController(withIdentifier: "ViewController3") as! ViewController3
         self.present(nextViewController, animated: true, completion: nil)
-        tuner.stopMonitoring()
     }
     
     func changeStringColor(stringIndex: Int) {
@@ -94,6 +120,7 @@ class ViewController2: UIViewController, TunerDelegate{
     
     @IBAction func skipButton(_ sender: UIButton) {
         score = 0.01
+        feedbackmessage = "You skipped it"
         testing().updateModel(accuracyScore: score)
         correctStrings = [false, false, false, false, false, false]
         let storyboard = UIStoryboard(name: "Main", bundle: nil)

@@ -25,19 +25,41 @@ class CompetingController: UIViewController, TunerDelegate{
         for i in 0...recordedChord.count-1 {
             let new_difference = abs(recordedChord[i] - userInterface.chordToCompare[i])
             difference += new_difference
-            if new_difference > 5{
+            if new_difference > 3{
                 score += 10*difference
+                correctStrings.append(false)
+            }else{
+                correctStrings.append(true)
             }
         }
+        
+        let numStringsPlayed = correctStrings.count
+        
+        for item in correctStrings{
+            if item == true {
+                displayScore += 1.0/Double(numStringsPlayed)
+            }
+        }
+        
+        if displayScore == 1.0  && elapsedTime < 12{
+            feedbackmessage = "Perfect! Well Done!"
+        }else if displayScore == 1.0  && elapsedTime >= 12{
+            feedbackmessage = "Well Done! Now faster."
+        } else if displayScore <= 0.5{
+            feedbackmessage = "WRONG, Try Again"
+        }else{
+            feedbackmessage = "Almost there"
+        }
+
         score = 1 - (score/1700)
         if score < 0{
             score = 0.01
         }
         
         if playerIndex == 1{
-            player1.overallScore += score
+            player1.overallScore += displayScore
         }else{
-            player2.overallScore += score
+            player2.overallScore += displayScore
         }
         
         gameIndex += 1
