@@ -38,7 +38,7 @@ class testing {
     let em = cogmod.generateNewChunk(string: "Em")
     let dm = cogmod.generateNewChunk(string: "Dm")
     
-    lazy var chordsList = [g,em,e,am,a,c,g,d,dm,f]
+    lazy var chordsList = [em,e,am,a,c,g,d,dm,f]
     
     func checkIfUserExists(InputUserName: String) {
         cogmod.reset()
@@ -89,14 +89,14 @@ class testing {
             chordsList[i].setSlot(slot: "type", value: "Chord")
             chordsList[i].setSlot(slot: "ChordType", value: chordsList[i].name)
             
-            let temp = timer.stop()
-            print("time is \(temp)")
+            //let temp = timer.stop()
+            //print("time is \(temp)")
             
             let user_references_chord = user_references + chordsList[i].name
             chordsList[i].referenceList = UserDefaults.standard.array(forKey: user_references_chord)  as? [Double] ?? [Double]()
             
             let user_betalist_chord = user_betalist + chordsList[i].name
-            print(user_betalist_chord)
+            //print(user_betalist_chord)
             chordsList[i].listBeta = UserDefaults.standard.array(forKey: user_betalist_chord) as? [Double] ?? [Double]()
             
             print ("we loaded betalist \(chordsList[i].listBeta) of chord: \(chordsList[i].name)" )
@@ -160,7 +160,7 @@ class testing {
     func nextORnew () -> Chunk?{
         var chosenchord = retrieveNext()
         if chosenchord == nil {
-            print("it was nil, we choose next chord")
+            print("did not retrieve, is there a new chord?")
             if indexcount < 9 {
                 let temp = addnewchord(chordsList: chordsList )
                 chosenchord = temp
@@ -191,6 +191,7 @@ class testing {
         let probechunk = cogmod.generateNewChunk(string: "toretrieve")
         probechunk.setSlot(slot: "type", value: "Chord")
         let (_, retrieveResult) = cogmod.dm.retrieve(chunk: probechunk)
+        print("when retrieving:")
         printDM()
         
 
@@ -243,7 +244,8 @@ class testing {
         //print(shownchunk[i].referenceList)
         //print("previous encounters at time: \(shownchunk[i].referenceList)")
         //print("previous beta scores at those times: \(shownchunk[i].listBeta)")
-        
+        print("after updating model:")
+        printDM()
         let user_references_chord = self.user_references + shownchunk[i].name
 
         UserDefaults.standard.set(shownchunk[i].referenceList, forKey: user_references_chord)

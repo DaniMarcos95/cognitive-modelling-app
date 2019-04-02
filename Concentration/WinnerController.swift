@@ -27,6 +27,6 @@ class WinnerController: UIViewController{
             winnerText.text = "It's a draw"
         }
         player1Score.text = "\(player1.name):\(round(100*player1.overallScore)/100)"
-        player2Score.text = "\(player2.name):\(round(100*player2.overallScore)/100))"
+        player2Score.text = "\(player2.name):\(round(100*player2.overallScore)/100)"
     }
 }

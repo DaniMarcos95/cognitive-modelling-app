@@ -34,6 +34,8 @@ protocol TunerDelegate {
     func changeStringColor(stringIndex: Int)
 }
 
+var indexCount = 0
+
 class Tuner: NSObject {
     var delegate: TunerDelegate?
 
@@ -42,7 +44,7 @@ class Tuner: NSObject {
     fileprivate let microphone: AKMicrophone
     fileprivate let analyzer:   AKAudioAnalyzer
     let amp_threshold_high = 0.08
-    let amp_threshold_low = 0.05
+    let amp_threshold_low = 0.03
     var recordedChord = [Double]()
     var count = 0
 
@@ -65,7 +67,7 @@ class Tuner: NSObject {
         microphone.play()
         recordedChord = [Double]()
         /* Initialize and schedule a new run loop timer. */
-        timer = Timer.scheduledTimer(timeInterval: 0.7, target: self,
+        timer = Timer.scheduledTimer(timeInterval: 1.5, target: self,
                                      selector: #selector(tick),
                                      userInfo: nil,
                                      repeats: true)
@@ -81,27 +83,14 @@ class Tuner: NSObject {
         /* Read frequency and amplitude from the analyzer. */
         let frequency = Double(analyzer.trackedFrequency.floatValue)
         let amplitude = Double(analyzer.trackedAmplitude.floatValue)
-        if(recordedChord.count < 2){
-            if(amplitude > amp_threshold_high && frequency > 80){
-                if recordedChord.count != 0{
-                    if abs(frequency - recordedChord[recordedChord.count-1]) > 20{
-                        recordedChord.append(frequency)
-                        self.delegate?.changeStringColor(stringIndex: recordedChord.count)
-                        if(recordedChord.count == numOfRecords){
-                            stopMonitoring()
-                            self.delegate?.compareChord(recordedChord: recordedChord)
-                        }
-                    }
-                }else{
-                    recordedChord.append(frequency)
-                    self.delegate?.changeStringColor(stringIndex: recordedChord.count)
-                }
-            }
-            }else{
-                if(amplitude > amp_threshold_low && frequency > 100){
+
+        if frequency < 1.9*originalChord[indexCount] || frequency > 0.6*originalChord[indexCount]{
+            if(recordedChord.count < 2){
+                if(amplitude > amp_threshold_high && frequency > 79){
                     if recordedChord.count != 0{
                         if abs(frequency - recordedChord[recordedChord.count-1]) > 20{
                             recordedChord.append(frequency)
+                            nextToRecord += 1
                             self.delegate?.changeStringColor(stringIndex: recordedChord.count)
                             if(recordedChord.count == numOfRecords){
                                 stopMonitoring()
@@ -110,9 +99,29 @@ class Tuner: NSObject {
                         }
                     }else{
                         recordedChord.append(frequency)
+                        nextToRecord += 1
                         self.delegate?.changeStringColor(stringIndex: recordedChord.count)
                     }
                 }
+            }else{
+                if(amplitude > amp_threshold_low && frequency > 100){
+                    if recordedChord.count != 0{
+                        if abs(frequency - recordedChord[recordedChord.count-1]) > 20{
+                            recordedChord.append(frequency)
+                            nextToRecord += 1
+                            self.delegate?.changeStringColor(stringIndex: recordedChord.count)
+                            if(recordedChord.count == numOfRecords){
+                                stopMonitoring()
+                                self.delegate?.compareChord(recordedChord: recordedChord)
+                            }
+                        }
+                    }else{
+                        recordedChord.append(frequency)
+                        nextToRecord += 1
+                        self.delegate?.changeStringColor(stringIndex: recordedChord.count)
+                    }
+                }
+            }
         }
     }
 }

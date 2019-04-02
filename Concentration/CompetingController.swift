@@ -19,8 +19,8 @@ class CompetingController: UIViewController, TunerDelegate{
         let scaleTime = 1000000000.0
         elapsedTime = Double(Double(end.uptimeNanoseconds)/scaleTime - Double(start.uptimeNanoseconds)/scaleTime) - 2.5
 
-        if elapsedTime > 10{
-            score += 30*(elapsedTime-10)
+        if elapsedTime > 20{
+            score += 30*(elapsedTime-20)
         }
         for i in 0...recordedChord.count-1 {
             let new_difference = abs(recordedChord[i] - userInterface.chordToCompare[i])

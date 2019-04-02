@@ -19,7 +19,7 @@ class InitialController: UIViewController {
         super.viewDidLoad()
         
         let initSound = Bundle.main.path(forResource: "intro_sound", ofType: "mp3")
-        
+        print(initSound)
         do{
             audioPlayer  = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: initSound!))
         }catch{
@@ -28,7 +28,7 @@ class InitialController: UIViewController {
         
         audioPlayer.play()
         
-        timer = Timer.scheduledTimer(timeInterval: 4.2, target: self,
+        timer = Timer.scheduledTimer(timeInterval: 6, target: self,
                                      selector: #selector(startApplication),
                                      userInfo: nil,
                                      repeats: false)

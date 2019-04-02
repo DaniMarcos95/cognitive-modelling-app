@@ -319,7 +319,7 @@ class UserInterface: UIView {
         if(showFeedback == true){
             if correctStrings.count < 6{
                 let diff = 6 - correctStrings.count
-                for i in 0...diff{
+                for i in 0..<diff{
                     correctStrings.insert(true, at: i)
                 }
             }

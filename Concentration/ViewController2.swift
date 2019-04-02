@@ -26,6 +26,8 @@ let Dmplay = ["x", "x", "o", " ", " ", " "]
 let Emplay = ["o", " ", " ", "o", "o", "o"]
 let x_0_strings = [Emplay, Eplay, Amplay, Aplay, Cplay, Gplay, Dplay, Dmplay, Fplay,]
 var displayScore = 0.0
+var nextToRecord = 0
+var originalChord: [Double] = []
 
 class ViewController2: UIViewController, TunerDelegate{
     func compareChord(recordedChord: [Double]) {
@@ -37,10 +39,11 @@ class ViewController2: UIViewController, TunerDelegate{
         let scaleTime = 1000000000.0
         elapsedTime = Double(Double(end.uptimeNanoseconds)/scaleTime - Double(start.uptimeNanoseconds)/scaleTime)
         
-        if elapsedTime > 10{
-            score += 30*(elapsedTime-10)
+        if elapsedTime > 20{
+            score += 30*(elapsedTime-20)
         }
-        
+        print(recordedChord)
+        print(userInterface.chordToCompare)
         for i in 0...recordedChord.count-1 {
             let new_difference = abs(recordedChord[i] - userInterface.chordToCompare[i])
             difference += new_difference
@@ -51,7 +54,7 @@ class ViewController2: UIViewController, TunerDelegate{
                 correctStrings.append(true)
             }
         }
-        
+
         let numStringsPlayed = correctStrings.count
         
         for item in correctStrings{
@@ -60,23 +63,21 @@ class ViewController2: UIViewController, TunerDelegate{
             }
         }
                 
-        if displayScore > 0.99  && elapsedTime < 12.0{
+        if displayScore > 0.99  && elapsedTime < 20.0{
             feedbackmessage = "Perfect! Well Done!"
-        }else if displayScore > 0.99  && elapsedTime >= 12.0{
-            print("Entering")
+        }else if displayScore > 0.99  && elapsedTime >= 20.0{
             feedbackmessage = "Well Done! Now faster."
         } else if displayScore <= 0.5{
             feedbackmessage = "WRONG, Try Again"
         }else{
             feedbackmessage = "Almost there"
         }
-
         
         score = 1 - (score/1700)
         if score < 0{
             score = 0.01
         }
-        
+        nextToRecord = 0
         testing().updateModel(accuracyScore: score)
         continueButton.isHidden = false
         tuner.stopMonitoring()
@@ -135,7 +136,7 @@ class ViewController2: UIViewController, TunerDelegate{
         userInterface = UserInterface(frame: CGRect(x: 53, y: 190, width: 269, height: 400))
         userInterface.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.6)
         view.addSubview(userInterface)
-        
+        originalChord = userInterface.chordToCompare
         timer = Timer.scheduledTimer(timeInterval: 0.1, target: self,
                                      selector: #selector(startRoutine),
                                      userInfo: nil,

@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import AVFoundation
 
 
 var  feedbackColors = [UIColor.red, UIColor.red, UIColor.red, UIColor.red, UIColor.red, UIColor.red]
@@ -29,6 +30,7 @@ class ViewController3: UIViewController{
     @IBOutlet weak var Esplay: UITextField!
     
     var userInterface: UserInterface!
+    var audioPlayer = AVAudioPlayer()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +43,27 @@ class ViewController3: UIViewController{
         timeText.text = "Time: \(round(10*elapsedTime)/10) seconds"
         accuracyText.text = "Score: \(round(100*displayScore)/100)/1.0"
         feedbackText.text = feedbackmessage
+        
+        if displayScore > 0.99 && elapsedTime <= 20{
+            let initSound = Bundle.main.path(forResource: "welldone", ofType: "mp3")
+            do{
+                audioPlayer  = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: initSound!))
+            }catch{
+                print("Error playing sound")
+            }
+            
+            audioPlayer.play()
+        }else if displayScore < 0.95{
+            let initSound = Bundle.main.path(forResource: "whompwhomp", ofType: "mp3")
+            do{
+                audioPlayer  = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: initSound!))
+            }catch{
+                print("Error playing sound")
+            }
+            
+            audioPlayer.play()
+        }else{}
+        
         let chordNamesDataset = ["Em","E","Am","A","C","G","D","Dm","F"]
         var index = 0
         for chord in chordNamesDataset{
